@@ -1,47 +1,29 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <script src="https://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
-    <script src="https://vk.com/js/api/xd_connection.js" type="text/javascript"></script>
+	<title>Bot Maxim</title>
+	<script src="https://vk.com/js/api/xd_connection.js?2" type="text/javascript"></script>
+<script type="text/javascript">
+VK.init(function() {
+	let data= {
+	"title": "Цsитата",
+	"title_url": "https://vk.com/app6310533",
+	"title_counter": 42,
+	"more": "Читать все цитаты",
+	"more_url": "https://vk.com/app6310533",
+	"text": "«Нам нужно гордиться»",
+	"descr": name + " о победе сторонников выхода страны \r\n из Евросоюза на референдуме",
+	};
+	VK.callMethod("showAppWidgetPreviewBox", 'text', 'return ' + JSON.stringify(data) + ';');
+	VK.callMethod("appWidgets.update", 'text', 'return ' + JSON.stringify(data) + ';');
+}, function() {
+// API initialization failed
+// Can reload page here
+}, '5.69');
+</script>
 </head>
 <body>
-<div>
-    <input type="text" id="type">
-</div>
-<br>
-<div>
-<textarea id="code">
-  return false;
-</textarea>
-</div>
-<div>
-    <button id="submit">Отправить</button>
-</div>
-<script type="text/javascript">
-    $(document).ready(function() {
-        VK.init(function () {
-            VK.callMethod("showGroupSettingsBox", 64);
-            $("#submit").click(function(){
-                var type = $( "#type" ).val();
-                var code = $( "#code" ).val();
-                console.log(type);
-                console.log(code);
-                VK.callMethod("showAppWidgetPreviewBox", type, code);
-            });
-            VK.addCallback('onAppWidgetPreviewFail', function f(a){
-                alert(a);
-            });
-            VK.addCallback('onAppWidgetPreviewCancel', function f(a){
-                alert(a);
-            });
-            VK.addCallback('onAppWidgetPreviewSuccess', function f(a){
-                alert(a);
-            });
-        }, function () {
-            alert("Ошибка ВК! Перезапустите приложение");
-        }, '5.69');
-    });
-</script>
+
+
 </body>
 </html>
