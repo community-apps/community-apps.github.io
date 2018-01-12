@@ -16,6 +16,7 @@ VK.init(function() {
 	};
 	VK.callMethod("showAppWidgetPreviewBox", 'text', 'return ' + JSON.stringify(data) + ';');
 	VK.callMethod("appWidgets.update", 'text', 'return ' + JSON.stringify(data) + ';');
+	VK.callMethod("showRequestBox", 62318438, "Hello!", "myRequestKey");
 }, function() {
 // API initialization failed
 // Can reload page here
