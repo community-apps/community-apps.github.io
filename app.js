@@ -68,7 +68,7 @@ document
   .getElementById('update-w')
   .addEventListener('click', function(){
    VK.callMethod("appWidgets.update", 'table', 'return ' + JSON.stringify(data) + ';');
-    //VK.Api.call("appWidgets.update", 'table', 'return ' + JSON.stringify(data) + ';');
+    VK.Api.call("appWidgets.update", 'table', 'return ' + JSON.stringify(data) + ';');
   })
 //  
     document
