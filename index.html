@@ -7,24 +7,28 @@
 
 VK.init(function() {
 let data= {
-    "title": "Рестораны",
-    "rows": [{
-        "title": "Корюшка",
-        "button": "Забронировать стол",
-        "descr": "Петропавловская крепость, д. 3",
-        "cover_id": "23434_45435",
-        "url": "https://vk.com/app34654#link1",
-        "button_url": "https://vk.com/app34654#link2"
-      }, {
-        "title": "Food Park",
-        "button": "Забронировать стол",
-        "descr": "Александровский парк, д. 4/3, лит. А",
-        "cover_id": "23434_45435",
-        "url": "https://vk.com/app34654#link3",
-        "button_url": "https://vk.com/app34654#link4"
+      "title": "Рестораны",
+      "rows": [{
+          "title": "Корюшка",
+          "title_url": "https://link",
+          "button": "Забронировать стол",
+          "button_url": "https://link2",
+          "icon_id": "3242346_8234324",
+          "address": "Петропавловская крепость, д. 3",
+          "time": "Каждый день с 12:00 до 1:00",
+          "text": "Если бы Петр I решил построить ресторан, это была бы «Корюшка» — заведение с видом на стрелку Васильевского острова, прямо у Петропавловской вблизи шумных вод Невы."
+        }, {
+          "title": "Food Park",
+          "title_url": "https://link3",
+          "button": "Забронировать стол",
+          "button_url": "https://link4",
+          "icon_id": "3242346_23432432",
+          "address": "Александровский парк, д. 4/3, лит. А",
+          "time": "Каждый день с 12:00 до 1:00",
+          "text": "Давно ли вы красиво, с чувством и толком ели в парке? Главное украшение Александровского парка — Food Park приглашает на еду со всех концов света на четвертый этаж ТРЦ «Великан»."
     }] 
 };
-VK.callMethod("showAppWidgetPreviewBox", 'coverlist', 'return ' + JSON.stringify(data) + ';')
+VK.callMethod("showAppWidgetPreviewBox", 'list', 'return ' + JSON.stringify(data) + ';')
 }, function() {
 // API initialization failed
 // Can reload page here
