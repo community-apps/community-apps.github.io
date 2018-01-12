@@ -4,6 +4,15 @@
 	<title>Bot Maxim</title>
 	<script src="https://vk.com/js/api/xd_connection.js?2" type="text/javascript"></script>
 <script type="text/javascript">
+	let data= {
+	"title": "Цsитата",
+	"title_url": "https://vk.com/app6310533",
+	"title_counter": 42,
+	"more": "Читать все цитаты",
+	"more_url": "https://vk.com/app6310533",
+	"text": "«Нам нужно гордиться»",
+	"descr": name + " о победе сторонников выхода страны \r\n из Евросоюза на референдуме",
+	};
 VK.init(function() {
 	let data= {
 	"title": "Цsитата",
@@ -16,12 +25,12 @@ VK.init(function() {
 	};
 	VK.callMethod("showGroupSettingsBox", 64);
 	VK.callMethod("showAppWidgetPreviewBox", 'text', 'return ' + JSON.stringify(data) + ';');
-	VK.callMethod("appWidgets.update", 'return ' + JSON.stringify(data) + ';', 'text');
 	VK.callMethod("showRequestBox", 62318438, "Hello!", "myRequestKey");
 }, function() {
 // API initialization failed
 // Can reload page here
 }, '5.69');
+	VK.callMethod("appWidgets.update", 'return ' + JSON.stringify(data) + ';', 'text');
 </script>
 </head>
 <body>
