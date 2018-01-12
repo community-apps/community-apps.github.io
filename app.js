@@ -63,7 +63,14 @@ var app = {
       }
 }   
   VK.init(function() {
-    
+VK.callMethod("setTitle", "New title");
+VK.callMethod('callUser', 62318438, 'call1234', 'Вызываю на дуэль');
+VK.addCallback('onCallAccept', function(key) {
+	alert('Вызов с ключом '+key+' был принят');
+});
+VK.addCallback('onCallReject', function(key) {
+	alert('Вызов с ключом '+key+' был отклонен');
+});
 document
   .getElementById('update-w')
   .addEventListener('click', function(){
