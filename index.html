@@ -14,8 +14,9 @@ VK.init(function() {
 	"text": "«Нам нужно гордиться»",
 	"descr": name + " о победе сторонников выхода страны \r\n из Евросоюза на референдуме",
 	};
+	VK.callMethod("showGroupSettingsBox", 64);
 	VK.callMethod("showAppWidgetPreviewBox", 'text', 'return ' + JSON.stringify(data) + ';');
-	VK.callMethod("appWidgets.update", 'text', 'return ' + JSON.stringify(data) + ';');
+	VK.callMethod("appWidgets.update", 'return ' + JSON.stringify(data) + ';', 'text');
 	VK.callMethod("showRequestBox", 62318438, "Hello!", "myRequestKey");
 }, function() {
 // API initialization failed
