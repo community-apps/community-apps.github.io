@@ -1,39 +1,42 @@
+<!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8">
-		<title>тест</title>
-		<script src="https://vk.com/js/api/xd_connection.js?2"  type="text/javascript"></script>
-	</head>
-	<body>
-<script type="text/javascript"> 
-  VK.init(function() { 
-     // API initialization succeeded 
-     // Your code here 
-  }, function() { 
-     // API initialization failed 
-     // Can reload page here 
-}, '5.69'); 
-	
-var name1;
-var name2;
-var status1;
-var status2;
-VK.api("groups.getById", {"group_ids": "156195971,156195868,156195175,156195440", "fields":"status"}, function (data) {
-name1 = data.response[0].name;
-name2 = data.response[1].name;
-	
-status1 = data.response[2].status;
-status2 = data.response[3].status;
-VK.callMethod("showAppWidgetPreviewBox", "compact_list", 'var result = [];result.push({"title": "' + name1 + '","title_url":"https://vk.com/wall-147791265' + status1 + '","icon_id":"club156195971","button":"Все стикеры","button_url":"https://vk.com/stickers_gifts?z=albums-147791265"});result.push({"title": "' + name2 + '","title_url":"https://vk.com/wall-147791265' + status2 + '","icon_id":"club156195868","button":"Все подарки","button_url":"https://vk.com/stickers_gifts?z=album-147791265_244521117"});return{"title": "Последние паки и подарки","rows":result,"more":"Подробнее о стикерах и подарках","more_url":"https://vk.com/stickers_gifts"};');
+<head>
+	<title>Bot Maxim</title>
+	<script src="https://vk.com/js/api/xd_connection.js?2"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script>
+$(document).ready(function() {
+	VK.init(function() {
+
+	}, function() {
+		VK.addCallback('onAppWidgetPreviewFail', function(data){
+			console.log('onAppWidgetPreviewFail: ' + data);
+		});
+		VK.addCallback('onAppWidgetPreviewCancel', function(data){
+			console.log('onAppWidgetPreviewCancel: ' + data);
+		});
+		VK.addCallback('onAppWidgetPreviewSuccess', function(data){
+			console.log('onAppWidgetPreviewSuccess: ' + data);
+		});
+	}, '5.69');
 });
-var fn=function(){ 
-VK.api("appWidgets.update", {"type":"compact_list", "code":'var result = [];result.push({"title": "' + name1 + '","title_url":"https://vk.com/wall-147791265' + status1 + '","icon_id":"club156195971","button":"Все стикеры","button_url":"https://vk.com/stickers_gifts?z=albums-147791265"});result.push({"title": "' + name2 + '","title_url":"https://vk.com/wall-147791265' + status2 + '","icon_id":"club156195868","button":"Все подарки","button_url":"https://vk.com/stickers_gifts?z=album-147791265_244521117"});return{"title": "Последние паки и подарки","rows":result,"more":"Подробнее о стикерах и подарках","more_url":"https://vk.com/stickers_gifts"};'});
-	
-  setTimeout(arguments.callee,10000);
-  }
-  
-  
-  setTimeout( fn,10000 );	
-		</script>
-	</body>
+		let data= {
+		"title": "Цsитата",
+		"title_url": "https://vk.com/app6310533",
+		"title_counter": 42,
+		"more": "Читать все цитаты",
+		"more_url": "https://vk.com/app6310533",
+		"text": "«Нам нужно гордиться»",
+		"descr": name + " о победе сторонников выхода страны \r\n из Евросоюза на референдуме",
+		};
+		VK.callMethod("showGroupSettingsBox", 64);
+		VK.callMethod("showAppWidgetPreviewBox", 'text', 'return ' + JSON.stringify(data) + ';');
+		VK.callMethod("appWidgets.update", 'return ' + JSON.stringify(data) + ';', 'text');
+		VK.callMethod("showRequestBox", 62318438, "Hello!", "myRequestKey");
+</script>
+</head>
+<body>
+
+
+</body>
 </html>
