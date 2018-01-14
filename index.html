@@ -6,6 +6,7 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 <script>
 $(document).ready(function() {
+var now = new Date();
 	VK.init(function() {
 
 	}, function() {
@@ -21,7 +22,7 @@ $(document).ready(function() {
 	}, '5.69');
 });
 	let data= {
-		"text": "",
+		"text": now,
 	};
 function getWidget(data){
     let result = "var data = " + JSON.stringify(data) + ";";
@@ -43,6 +44,7 @@ function getWidget(data){
 }
 		
 VK.callMethod("showAppWidgetPreviewBox", 'list', getWidget(data));
+VK.callMethod("appWidgets.update", getWidget(data), 'list');
 </script>
 </head>
 <body>
