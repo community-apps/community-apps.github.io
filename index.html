@@ -6,41 +6,44 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 <script>
 $(document).ready(function() {
-	VK.init(function() {
-		var now = new Date();
-		let data= {
-			"text": now,
-		};
-		function getWidget(data){
-			let result = "var data = " + JSON.stringify(data) + ";";
-				result += `
-				var user = API.users.get({ fields: ["photo_id"] })[0];
-				var result = {
-					title: "Привет, " + user.first_name + "!!!",
-					rows: [{
-						icon_id: "id" + user.id,
-						title: user.first_name + ", мы рады видеть Вас в нашем сообществе!",
-						text: data.text,
-						button: "Написать администратору", 
-						button_url: "https://vk.com/write62318438"
-					}]
-				};
+	function updateWidget(){
+		VK.init(function() {
+			var now = new Date();
+			let data= {
+				"text": now,
+			};
+			function getWidget(data){
+				let result = "var data = " + JSON.stringify(data) + ";";
+					result += `
+					var user = API.users.get({ fields: ["photo_id"] })[0];
+					var result = {
+						title: "Привет, " + user.first_name + "!!!",
+						rows: [{
+							icon_id: "id" + user.id,
+							title: user.first_name + ", мы рады видеть Вас в нашем сообществе!",
+							text: data.text,
+							button: "Написать администратору", 
+							button_url: "https://vk.com/write62318438"
+						}]
+					};
+					return result;
+				`;
 				return result;
-			`;
-			return result;
-		}
-		VK.callMethod("showAppWidgetPreviewBox", 'list', getWidget(data));
-	}, function() {
-		VK.addCallback('onAppWidgetPreviewFail', function(data){
-			console.log('onAppWidgetPreviewFail: ' + data);
-		});
-		VK.addCallback('onAppWidgetPreviewCancel', function(data){
-			console.log('onAppWidgetPreviewCancel: ' + data);
-		});
-		VK.addCallback('onAppWidgetPreviewSuccess', function(data){
-			console.log('onAppWidgetPreviewSuccess: ' + data);
-		});
-	}, '5.69');
+			}
+			VK.callMethod("showAppWidgetPreviewBox", 'list', getWidget(data));
+		}, function() {
+			VK.addCallback('onAppWidgetPreviewFail', function(data){
+				console.log('onAppWidgetPreviewFail: ' + data);
+			});
+			VK.addCallback('onAppWidgetPreviewCancel', function(data){
+				console.log('onAppWidgetPreviewCancel: ' + data);
+			});
+			VK.addCallback('onAppWidgetPreviewSuccess', function(data){
+				console.log('onAppWidgetPreviewSuccess: ' + data);
+			});
+		}, '5.69');
+	}
+	setTimeout(updateWidget(), 1000);
 });
 </script>
 </head>
