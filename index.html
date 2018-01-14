@@ -30,9 +30,28 @@ $(document).ready(function() {
 		"descr": name + " о победе сторонников выхода страны \r\n из Евросоюза на референдуме",
 		};
 		VK.callMethod("showRequestBox", 62318438, "Hello!", "myRequestKey");
-		VK.callMethod("showAppWidgetPreviewBox", 'text', 'return ' + JSON.stringify(data) + ';');
-		VK.callMethod("appWidgets.update", 'return ' + JSON.stringify(data) + ';', 'text');
 
+
+function getWidget(data){
+    let result = "var data = " + JSON.stringify(data) + ";";
+        result += `
+        var user = API.users.get({ fields: ["photo_id"] })[0];
+        var result = {
+            title: "Привет, " + user.first_name + "!!! :)",
+            rows: [{
+                icon_id: "id" + user.id,
+                title: user.first_name + ", мы рады видеть Вас в нашем сообществе!",
+                text: data.text,
+                button: "Написать админу", 
+                button_url: "https://vk.com/write77731755"
+            }]
+        };
+        return result;
+    `;
+    return result;
+}
+		
+	getWidget(data);	
 </script>
 </head>
 <body>
