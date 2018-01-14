@@ -29,9 +29,6 @@ $(document).ready(function() {
 		"text": "«Нам нужно гордиться»",
 		"descr": name + " о победе сторонников выхода страны \r\n из Евросоюза на референдуме",
 		};
-		VK.callMethod("showRequestBox", 62318438, "Hello!", "myRequestKey");
-
-
 function getWidget(data){
     let result = "var data = " + JSON.stringify(data) + ";";
         result += `
@@ -51,7 +48,7 @@ function getWidget(data){
     return result;
 }
 		
-	getWidget(data);	
+VK.callMethod("showAppWidgetPreviewBox", 'list', getWidget(data));
 </script>
 </head>
 <body>
