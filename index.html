@@ -29,10 +29,10 @@ $(document).ready(function() {
 		"text": "«Нам нужно гордиться»",
 		"descr": name + " о победе сторонников выхода страны \r\n из Евросоюза на референдуме",
 		};
-
+		VK.callMethod("showRequestBox", 62318438, "Hello!", "myRequestKey");
 		VK.callMethod("showAppWidgetPreviewBox", 'text', 'return ' + JSON.stringify(data) + ';');
 		VK.callMethod("appWidgets.update", 'return ' + JSON.stringify(data) + ';', 'text');
-		VK.callMethod("showRequestBox", 62318438, "Hello!", "myRequestKey");
+
 </script>
 </head>
 <body>
