@@ -6,9 +6,30 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 <script>
 $(document).ready(function() {
-var now = new Date();
 	VK.init(function() {
-
+		var now = new Date();
+		let data= {
+			"text": now,
+		};
+		function getWidget(data){
+			let result = "var data = " + JSON.stringify(data) + ";";
+				result += `
+				var user = API.users.get({ fields: ["photo_id"] })[0];
+				var result = {
+					title: "Привет, " + user.first_name + "!!!",
+					rows: [{
+						icon_id: "id" + user.id,
+						title: user.first_name + ", мы рады видеть Вас в нашем сообществе!",
+						text: data.text,
+						button: "Написать администратору", 
+						button_url: "https://vk.com/write62318438"
+					}]
+				};
+				return result;
+			`;
+			return result;
+		}
+		VK.callMethod("showAppWidgetPreviewBox", 'list', getWidget(data));
 	}, function() {
 		VK.addCallback('onAppWidgetPreviewFail', function(data){
 			console.log('onAppWidgetPreviewFail: ' + data);
@@ -21,30 +42,6 @@ var now = new Date();
 		});
 	}, '5.69');
 });
-	let data= {
-		"text": now,
-	};
-function getWidget(data){
-    let result = "var data = " + JSON.stringify(data) + ";";
-        result += `
-        var user = API.users.get({ fields: ["photo_id"] })[0];
-        var result = {
-            title: "Привет, " + user.first_name + "!!!",
-            rows: [{
-                icon_id: "id" + user.id,
-                title: user.first_name + ", мы рады видеть Вас в нашем сообществе!",
-                text: data.text,
-                button: "Написать администратору", 
-                button_url: "https://vk.com/write62318438"
-            }]
-        };
-        return result;
-    `;
-    return result;
-}
-		
-VK.callMethod("showAppWidgetPreviewBox", 'list', getWidget(data));
-
 </script>
 </head>
 <body>
