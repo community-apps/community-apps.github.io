@@ -29,10 +29,11 @@ $(document).ready(function() {
 				return result;
 			`;
 			return result;
+			alert(JSON.stringify(data));
 		}
 		VK.callMethod("showInstallBox");
 		VK.callMethod("showAppWidgetPreviewBox", 'list', getWidget(data));
-		alert(getWidget(data));
+		
 		VK.addCallback('onAppWidgetPreviewFail', function(data){
 			console.log('onAppWidgetPreviewFail: ' + data);
 		});
