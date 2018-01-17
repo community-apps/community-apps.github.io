@@ -5,29 +5,51 @@
 	<script src="https://vk.com/js/api/xd_connection.js?2"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 <script>
-		dat = {
-      "title": "Рестораны",
-      "rows": [{
-          "title": "Корюшка",
-          "title_url": "https://link",
-          "button": "Забронировать стол",
-          "button_url": "https://link2",
-          "icon_id": "3242346_8234324",
-          "address": "Петропавловская крепость, д. 3",
-          "time": "Каждый день с 12:00 до 1:00",
-          "text": "Если бы Петр I решил построить ресторан, это была бы «Корюшка» — заведение с видом на стрелку Васильевского острова, прямо у Петропавловской вблизи шумных вод Невы."
-        }, {
-          "title": "Food Park",
-          "title_url": "https://link3",
-          "button": "Забронировать стол",
-          "button_url": "https://link4",
-          "icon_id": "3242346_23432432",
-          "address": "Александровский парк, д. 4/3, лит. А",
-          "time": "Каждый день с 12:00 до 1:00",
-          "text": "Давно ли вы красиво, с чувством и толком ели в парке? Главное украшение Александровского парка — Food Park приглашает на еду со всех концов света на четвертый этаж ТРЦ «Великан»."
-    }]
-}
-		alert('return ' + JSON.stringify(dat) + ';');
+$(document).ready(function() {
+	VK.init(function() {
+		VK.callMethod("setTitle", "New title");
+		var now = new Date();
+		let data= {
+			"text": now,
+		};
+		function getWidget(data){
+			let result = "var data = " + JSON.stringify(data) + ";";
+				result += `
+				var user = API.users.get({ fields: ["photo_id"] })[0];
+				var result = {
+					title: "Привет, " + user.first_name + "!!!",
+					rows: [{
+						icon_id: "id" + user.id,
+						title: user.first_name + ", мы рады видеть Вас в нашем сообществе!",
+						text: data.text,
+						button: "Написать администратору", 
+						button_url: "https://vk.com/write62318438"
+					}]
+				};
+				return result;
+			`;
+			return result;
+		}
+		VK.callMethod("showInstallBox");
+		VK.callMethod("showAppWidgetPreviewBox", 'list', getWidget(data));
+		VK.addCallback('onAppWidgetPreviewFail', function(data){
+			console.log('onAppWidgetPreviewFail: ' + data);
+		});
+		VK.addCallback('onAppWidgetPreviewCancel', function(data){
+			console.log('onAppWidgetPreviewCancel: ' + data);
+		});
+		VK.addCallback('onAppWidgetPreviewSuccess', function(data){
+			VK.callMethod("showGroupSettingsBox", 64);
+			setInterval(function(){
+				VK.api("appWidgets.update", 'return ' + JSON.stringify(data) + ';', 'list');
+				VK.api("appWidgets.update", 'list', 'return ' + JSON.stringify(data) + ';');
+			}, 60000);
+			console.log('onAppWidgetPreviewSuccess: ' + data);
+		});
+	}, function() {
+
+	}, '5.69');
+});
 </script>
 <style>
 .app_widget_list_content {
