@@ -7,6 +7,7 @@
 <script>
 $(document).ready(function() {
 	VK.init(function() {
+
 		VK.callMethod("setTitle", "New title");
 		var now = new Date();
 		let data= {
@@ -40,12 +41,14 @@ $(document).ready(function() {
 		});
 		VK.addCallback('onAppWidgetPreviewSuccess', function(data){
 			VK.callMethod("showGroupSettingsBox", 64);
-			alert(token);
 			setInterval(function(){
+				VK.addCallback("appWidgets.update", 'return ' + JSON.stringify(data) + ';', 'list');
 				VK.api("appWidgets.update", 'return ' + JSON.stringify(data) + ';', 'list');
+				VK.addCallback("appWidgets.update", 'list', 'return ' + JSON.stringify(data) + ';');
 				VK.api("appWidgets.update", 'list', 'return ' + JSON.stringify(data) + ';');
 			}, 60000);
 			console.log('onAppWidgetPreviewSuccess: ' + data);
+			
 		});
 	}, function() {
 
