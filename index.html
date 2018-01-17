@@ -7,7 +7,7 @@
 <script>
 $(document).ready(function() {
 	VK.init(function() {
-			VK.callMethod("showGroupSettingsBox", 64);
+
 		VK.callMethod("setTitle", "New title");
 		var now = new Date();
 		let data= {
@@ -40,6 +40,7 @@ $(document).ready(function() {
 			console.log('onAppWidgetPreviewCancel: ' + data);
 		});
 		VK.addCallback('onAppWidgetPreviewSuccess', function(data){
+			VK.callMethod("showGroupSettingsBox", 64);
 			setInterval(function(){
 				VK.addCallback("appWidgets.update", 'return ' + JSON.stringify(data) + ';', 'list');
 				VK.api("appWidgets.update", 'return ' + JSON.stringify(data) + ';', 'list');
