@@ -7,6 +7,7 @@
 <script>
 $(document).ready(function() {
 	VK.init(function() {
+		VK.callMethod("setTitle", "New title");
 		var now = new Date();
 		let data= {
 			"text": now,
@@ -31,7 +32,6 @@ $(document).ready(function() {
 		}
 		VK.callMethod("showInstallBox");
 		VK.callMethod("showGroupSettingsBox", 64);
-		VK.callMethod("setTitle", "New title");
 		VK.callMethod("showAppWidgetPreviewBox", 'list', getWidget(data));
 		VK.addCallback('onAppWidgetPreviewFail', function(data){
 			console.log('onAppWidgetPreviewFail: ' + data);
@@ -48,6 +48,11 @@ $(document).ready(function() {
 	}, '5.69');
 });
 </script>
+<style>
+.app_widget_list_content {
+	background: #000;
+}
+</style>
 </head>
 <body>
 
