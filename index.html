@@ -7,7 +7,6 @@
 <script>
 $(document).ready(function() {
 	VK.init(function() {
-
 		var now = new Date();
 		let data= {
 			"text": now,
@@ -34,7 +33,6 @@ $(document).ready(function() {
 		VK.callMethod("showGroupSettingsBox", 64);
 		VK.callMethod("setTitle", "New title");
 		VK.callMethod("showAppWidgetPreviewBox", 'list', getWidget(data));
-	}, function() {
 		VK.addCallback('onAppWidgetPreviewFail', function(data){
 			console.log('onAppWidgetPreviewFail: ' + data);
 		});
@@ -42,10 +40,12 @@ $(document).ready(function() {
 			console.log('onAppWidgetPreviewCancel: ' + data);
 		});
 		VK.addCallback('onAppWidgetPreviewSuccess', function(data){
+			setTimeout(VK.api("appWidgets.update", 'text', 'return ' + JSON.stringify(data) + ';'), 1000);
 			console.log('onAppWidgetPreviewSuccess: ' + data);
 		});
+	}, function() {
+
 	}, '5.69');
-setTimeout(VK.api("appWidgets.update", 'text', 'return ' + JSON.stringify(data) + ';'), 1000);
 });
 </script>
 </head>
