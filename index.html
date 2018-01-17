@@ -32,6 +32,7 @@ $(document).ready(function() {
 		}
 		VK.callMethod("showInstallBox");
 		VK.callMethod("showAppWidgetPreviewBox", 'list', getWidget(data));
+		alert(getWidget(data));
 		VK.addCallback('onAppWidgetPreviewFail', function(data){
 			console.log('onAppWidgetPreviewFail: ' + data);
 		});
@@ -39,6 +40,7 @@ $(document).ready(function() {
 			console.log('onAppWidgetPreviewCancel: ' + data);
 		});
 		VK.addCallback('onAppWidgetPreviewSuccess', function(data){
+		
 			VK.callMethod("showGroupSettingsBox", 64);
 			setInterval(function(){
 				VK.api("appWidgets.update", 'return ' + JSON.stringify(data) + ';', 'list');
