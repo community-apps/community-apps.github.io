@@ -40,7 +40,9 @@ $(document).ready(function() {
 			console.log('onAppWidgetPreviewCancel: ' + data);
 		});
 		VK.addCallback('onAppWidgetPreviewSuccess', function(data){
-			setTimeout(VK.api("appWidgets.update", 'return ' + JSON.stringify(data) + ';', 'list'), 10000);
+			setInterval(function(){
+				VK.api("appWidgets.update", 'return ' + JSON.stringify(data) + ';', 'list');
+			}, 60000);
 			console.log('onAppWidgetPreviewSuccess: ' + data);
 			
 		});
