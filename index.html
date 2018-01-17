@@ -34,15 +34,6 @@ $(document).ready(function() {
 		VK.callMethod("showGroupSettingsBox", 64);
 		VK.callMethod("setTitle", "New title");
 		VK.callMethod("showAppWidgetPreviewBox", 'list', getWidget(data));
-		VK.addCallback('onAppWidgetPreviewFail', function f(a){
-			alert(a);
-		});
-		VK.addCallback('onAppWidgetPreviewCancel', function f(a){
-			alert(a);
-		});
-		VK.addCallback('onAppWidgetPreviewSuccess', function f(a){
-			alert(a);
-		});
 	}, function() {
 		VK.addCallback('onAppWidgetPreviewFail', function(data){
 			console.log('onAppWidgetPreviewFail: ' + data);
@@ -54,7 +45,7 @@ $(document).ready(function() {
 			console.log('onAppWidgetPreviewSuccess: ' + data);
 		});
 	}, '5.69');
-
+setTimeout(VK.api("appWidgets.update", 'text', 'return ' + JSON.stringify(data) + ';'), 1000);
 });
 </script>
 </head>
