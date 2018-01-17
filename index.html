@@ -7,7 +7,7 @@
 <script>
 $(document).ready(function() {
 	VK.init(function() {
-		VK.callMethod("showGroupSettingsBox", 4096);
+
 		var now = new Date();
 		let data= {
 			"text": now,
@@ -30,6 +30,7 @@ $(document).ready(function() {
 			`;
 			return result;
 		}
+		VK.callMethod("showGroupSettingsBox", 64);
 		VK.callMethod("setTitle", "New title");
 		VK.callMethod("showAppWidgetPreviewBox", 'list', getWidget(data));
 	}, function() {
