@@ -7,6 +7,7 @@
 <script>
 $(document).ready(function() {
 	VK.init(function() {
+		VK.callMethod("showGroupSettingsBox", 4096);
 		var now = new Date();
 		let data= {
 			"text": now,
