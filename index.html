@@ -7,46 +7,52 @@
 <script>
 $(document).ready(function() {
 	VK.init(function() {
-		VK.callMethod("showGroupSettingsBox", 64);
 		VK.callMethod("setTitle", "New title");
-		var now = new Date();
-		let data= {
-			"text": now,
-		};
-		function getWidget(data){
-			let result = "var data = " + JSON.stringify(data) + ";";
-				result += `
-				var user = API.users.get({ fields: ["photo_id"] })[0];
-				var result = {
-					title: "Привет, " + user.first_name + "!!!",
-					rows: [{
-						icon_id: "id" + user.id,
-						title: user.first_name + ", мы рады видеть Вас в нашем сообществе!",
-						text: data.text,
-						button: "Написать администратору", 
-						button_url: "https://vk.com/write62318438"
-					}]
-				};
+		VK.callMethod("showGroupSettingsBox", 64);
+		VK.addCallback('onSettingsChanged', function(data){
+			console.log('onSettingsChanged: ' + data);
+			var now = new Date();
+			let data= {
+				"text": now,
+			};
+			function getWidget(data){
+				let result = "var data = " + JSON.stringify(data) + ";";
+					result += `
+					var user = API.users.get({ fields: ["photo_id"] })[0];
+					var result = {
+						title: "Привет, " + user.first_name + "!!!",
+						rows: [{
+							icon_id: "id" + user.id,
+							title: user.first_name + ", мы рады видеть Вас в нашем сообществе!",
+							text: data.text,
+							button: "Написать администратору", 
+							button_url: "https://vk.com/write62318438"
+						}]
+					};
+					return result;
+				`;
 				return result;
-			`;
-			return result;
-		}
-		VK.callMethod("showInstallBox");
-		VK.callMethod("showAppWidgetPreviewBox", 'list', getWidget(data));
-		VK.addCallback('onAppWidgetPreviewFail', function(data){
-			console.log('onAppWidgetPreviewFail: ' + data);
-		});
-		VK.addCallback('onAppWidgetPreviewCancel', function(data){
-			console.log('onAppWidgetPreviewCancel: ' + data);
-		});
-		VK.addCallback('onAppWidgetPreviewSuccess', function(data){
-			
-			setInterval(function(){
-				VK.callMethod("appWidgets.update", getWidget(data), 'list');
-				VK.callMethod("appWidgets.update", 'list', getWidget(data));
+			}
+			VK.callMethod("showInstallBox");
+			VK.callMethod("showAppWidgetPreviewBox", 'list', getWidget(data));
+			VK.addCallback('onAppWidgetPreviewFail', function(data){
+				console.log('onAppWidgetPreviewFail: ' + data);
+			});
+			VK.addCallback('onAppWidgetPreviewCancel', function(data){
+				console.log('onAppWidgetPreviewCancel: ' + data);
+			});
+			VK.addCallback('onAppWidgetPreviewSuccess', function(data){
+				
+				setInterval(function(){
+					VK.callMethod("appWidgets.update", getWidget(data), 'list');
+					VK.callMethod("appWidgets.update", 'list', getWidget(data));
 
-			}, 60000);
-			console.log('onAppWidgetPreviewSuccess: ' + data);
+				}, 60000);
+				console.log('onAppWidgetPreviewSuccess: ' + data);
+			});
+		});
+		VK.addCallback('onSettingsCancel', function(data){
+			console.log('onSettingsCancel: ' + data);
 		});
 	}, function() {
 
