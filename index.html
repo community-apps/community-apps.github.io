@@ -12,7 +12,6 @@ $(document).ready(function() {
 		let data= {
 			"text": now,
 		};
-		function getWidget(data){
 			let result = "var data = " + JSON.stringify(data) + ";";
 				result += `
 				var user = API.users.get({ fields: ["photo_id"] })[0];
@@ -26,13 +25,9 @@ $(document).ready(function() {
 						button_url: "https://vk.com/write62318438"
 					}]
 				};
-				return result;
 			`;
-			return result;
-			alert(JSON.stringify(data));
-		}
 		VK.callMethod("showInstallBox");
-		VK.callMethod("showAppWidgetPreviewBox", 'list', getWidget(data));
+		VK.callMethod("showAppWidgetPreviewBox", 'list', result);
 		
 		VK.addCallback('onAppWidgetPreviewFail', function(data){
 			console.log('onAppWidgetPreviewFail: ' + data);
