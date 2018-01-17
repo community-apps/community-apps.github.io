@@ -7,6 +7,7 @@
 <script>
 $(document).ready(function() {
 	VK.init(function() {
+			VK.callMethod("showGroupSettingsBox", 64);
 		VK.callMethod("setTitle", "New title");
 		var now = new Date();
 		let data= {
@@ -31,7 +32,6 @@ $(document).ready(function() {
 			return result;
 		}
 		VK.callMethod("showInstallBox");
-		VK.callMethod("showGroupSettingsBox", 64);
 		VK.callMethod("showAppWidgetPreviewBox", 'list', getWidget(data));
 		VK.addCallback('onAppWidgetPreviewFail', function(data){
 			console.log('onAppWidgetPreviewFail: ' + data);
