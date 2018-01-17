@@ -5,31 +5,6 @@
 	<script src="https://vk.com/js/api/xd_connection.js?2"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 <script>
-$(document).ready(function() {
-	VK.init(function() {
-		VK.callMethod("setTitle", "New title");
-		var now = new Date();
-		let data= {
-			"text": now,
-		};
-		function getWidget(data){
-			let result = "var data = " + JSON.stringify(data) + ";";
-				result += `
-				var user = API.users.get({ fields: ["photo_id"] })[0];
-				var result = {
-					title: "Привет, " + user.first_name + "!!!",
-					rows: [{
-						icon_id: "id" + user.id,
-						title: user.first_name + ", мы рады видеть Вас в нашем сообществе!",
-						text: data.text,
-						button: "Написать администратору", 
-						button_url: "https://vk.com/write62318438"
-					}]
-				};
-				return result;
-			`;
-			return result;
-		}
 		dat = {
       "title": "Рестораны",
       "rows": [{
@@ -53,12 +28,6 @@ $(document).ready(function() {
     }]
 }
 		alert('return ' + JSON.stringify(dat) + ';');
-		
-
-	}, function() {
-
-	}, '5.69');
-});
 </script>
 <style>
 .app_widget_list_content {
