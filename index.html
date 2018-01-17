@@ -40,11 +40,11 @@ $(document).ready(function() {
 		});
 		VK.addCallback('onAppWidgetPreviewSuccess', function(data){
 			VK.callMethod("showGroupSettingsBox", 64);
-			VK.addCallback('onSettingsChanged', function(data){
-				console.log('onSettingsChanged: ' + data);
+			VK.addCallback('onGroupSettingsChanged', function(data){
+				console.log('onGroupSettingsChanged: ' + data);
 			});
-			VK.addCallback('onSettingsCancel', function(data){
-				console.log('onSettingsCancel: ' + data);
+			VK.addCallback('onGroupSettingsCancel', function(data){
+				console.log('onGroupSettingsCancel: ' + data);
 			});
 			setInterval(function(){
 				VK.callMethod("appWidgets.update", getWidget(data), 'list');
