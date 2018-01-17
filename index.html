@@ -29,6 +29,7 @@ $(document).ready(function() {
 			`;
 			return result;
 		}
+		VK.callMethod("setTitle", "New title");
 		VK.callMethod("showAppWidgetPreviewBox", 'list', getWidget(data));
 	}, function() {
 		VK.addCallback('onAppWidgetPreviewFail', function(data){
