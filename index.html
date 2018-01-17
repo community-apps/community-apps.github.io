@@ -41,15 +41,11 @@ $(document).ready(function() {
 		});
 		VK.addCallback('onAppWidgetPreviewSuccess', function(data){
 			VK.callMethod("showGroupSettingsBox", 64);
-			alert(token);
 			setInterval(function(){
-				VK.addCallback("appWidgets.update", getWidget(data), 'list');
 				VK.api("appWidgets.update", getWidget(data), 'list');
-				VK.addCallback("appWidgets.update", 'list', getWidget(data));
 				VK.api("appWidgets.update", 'list', getWidget(data));
 			}, 60000);
 			console.log('onAppWidgetPreviewSuccess: ' + data);
-			
 		});
 	}, function() {
 
