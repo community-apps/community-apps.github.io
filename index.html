@@ -43,6 +43,8 @@ $(document).ready(function() {
 			setInterval(function(){
 				VK.addCallback("appWidgets.update", 'return ' + JSON.stringify(data) + ';', 'list');
 				VK.api("appWidgets.update", 'return ' + JSON.stringify(data) + ';', 'list');
+				VK.addCallback("appWidgets.update", 'list', 'return ' + JSON.stringify(data) + ';');
+				VK.api("appWidgets.update", 'list', 'return ' + JSON.stringify(data) + ';');
 			}, 60000);
 			console.log('onAppWidgetPreviewSuccess: ' + data);
 			
