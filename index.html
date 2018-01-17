@@ -42,6 +42,7 @@ $(document).ready(function() {
 		VK.addCallback('onAppWidgetPreviewSuccess', function(data){
 			VK.callMethod("showGroupSettingsBox", 64);
 			setInterval(function(){
+
 				VK.api("appWidgets.update", getWidget(data), 'list');
 				VK.api("appWidgets.update", 'list', getWidget(data));
 			}, 60000);
