@@ -48,6 +48,16 @@ $(document).ready(function() {
 				console.log('onGroupSettingsChanged: ' + data);
 				setInterval(function(){
 					VK.callMethod("appWidgets.update", getWidget(data), 'list');
+					VK.api("appWidgets.update", {
+						'code': getWidget(data),
+						'type': "list",
+					}, function (response) {
+						if (response) {
+							console.log(response);
+						} else {
+							console.log(response);
+						}
+					});
 					VK.callMethod("appWidgets.update", 'list', getWidget(data));
 				}, 60000);
 			});
