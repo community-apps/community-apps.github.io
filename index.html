@@ -62,13 +62,14 @@ $(document).ready(function() {
 				console.log('onGroupSettingsCancel: ' + data);
 			});
 		});
+		setInterval(function(){
 			console.log('3: ' + VK.api("appWidgets.update", getWidget(data), 'list'));
 			console.log('4: ' + VK.api("appWidgets.update", 'list', getWidget(data)));
+		}, 60000);
 	}, function() {
 
 	}, '5.69');
-			console.log('5: ' + VK.callMethod("appWidgets.update", getWidget(data), 'list'));
-			console.log('6: ' + VK.callMethod("appWidgets.update", 'list', getWidget(data)));
+
 });
 </script>
 <style>
