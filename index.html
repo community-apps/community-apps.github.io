@@ -30,7 +30,7 @@ $(document).ready(function() {
 			`;
 			return result;
 		}
-			VK.Api.call('getVariable', {key: 1281}, function(r) {
+			VK.api('getVariable', {key: 1281}, function(r) {
   if(r.response) {
     alert('Привет, ' + r.response);
   }
