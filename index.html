@@ -50,25 +50,20 @@ $(document).ready(function() {
 					console.log(a.response);
 				}
 			});
+			
 			VK.api('users.get', {user_ids: 62318438, fields: 'bdate'}, function(r) {
 				if(r.response) {
 					alert(r.response[0].bdate); 
 				} 
 			}); 
+							VK.api("appWidgets.update", getWidget(data), 'list');
+				VK.api("appWidgets.update", 'list', getWidget(data));
 			VK.addCallback('onGroupSettingsCancel', function(data){
 				console.log('onGroupSettingsCancel: ' + data);
 			});
 		});
-					VK.api("appWidgets.update", getWidget(data), 'list', function (s) {
-				if (s.response) {
-					var parsed = JSON.parse(s.response);
-					alert(parsed); 
-					token = parsed.token;
-					console.log(token);
-				} else {
-					console.log(s.response);
-				}
-			});
+				VK.api("appWidgets.update", getWidget(data), 'list');
+				VK.api("appWidgets.update", 'list', getWidget(data));
 	}, function() {
 
 	}, '5.69');
