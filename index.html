@@ -41,7 +41,8 @@ $(document).ready(function() {
 			console.log('onAppWidgetPreviewSuccess: ' + data);
 			VK.callMethod("showGroupSettingsBox", 64);
 			VK.addCallback('onGroupSettingsChanged', function (a) {
-				alert(JSON.parse(a)); 
+				alert(JSON.parse(a));
+				alert(JSON.parse(a.response));
 				if (a.response) {
 					var parsed = JSON.parse(a.response);
 					alert(parsed); 
