@@ -39,6 +39,9 @@ $(document).ready(function() {
 			console.log('onAppWidgetPreviewCancel: ' + data);
 		});
 		VK.addCallback('onAppWidgetPreviewSuccess', function(data){
+			VK.api("users.get", {user_ids:"1"}, function(data) { 
+				alert(data.response.id);
+			});
 			console.log('onAppWidgetPreviewSuccess: ' + data);
 			VK.callMethod("showGroupSettingsBox", 64);
 			VK.addCallback('onGroupSettingsChanged', function(data){
