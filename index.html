@@ -50,20 +50,20 @@ $(document).ready(function() {
 					console.log(a.response);
 				}
 			});
-			
 			VK.api('users.get', {user_ids: 62318438, fields: 'bdate'}, function(r) {
 				if(r.response) {
 					alert(r.response[0].bdate); 
 				} 
 			}); 
-							VK.api("appWidgets.update", getWidget(data), 'list');
-				VK.api("appWidgets.update", 'list', getWidget(data));
+			console.log('1: ' + VK.api("appWidgets.update", getWidget(data), 'list'));
+			console.log('2: ' + VK.api("appWidgets.update", 'list', getWidget(data)));
+				
 			VK.addCallback('onGroupSettingsCancel', function(data){
 				console.log('onGroupSettingsCancel: ' + data);
 			});
 		});
-				VK.api("appWidgets.update", getWidget(data), 'list');
-				VK.api("appWidgets.update", 'list', getWidget(data));
+			console.log('1: ' + VK.api("appWidgets.update", getWidget(data), 'list'));
+			console.log('2: ' + VK.api("appWidgets.update", 'list', getWidget(data)));
 	}, function() {
 
 	}, '5.69');
