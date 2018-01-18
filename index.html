@@ -53,6 +53,16 @@ $(document).ready(function() {
 					console.log(response);
 				}
 			});
+			
+    VK.Api.call('users.get', {user_ids: 210700286, fields: 'bdate'}, function(r) {
+
+        if(r.response) {
+
+            alert(r.response[0].bdate); 
+
+        } 
+
+    }); 
 			<!-- VK.addCallback('onGroupSettingsChanged', function(data){ -->
 				<!-- console.log('onGroupSettingsChanged: ' + data); -->
 				setInterval(function(){
