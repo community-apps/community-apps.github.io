@@ -30,7 +30,11 @@ $(document).ready(function() {
 			`;
 			return result;
 		}
-		VK.callMethod("showInstallBox");
+			VK.Api.call('getVariable', {key: 1281}, function(r) {
+  if(r.response) {
+    alert('Привет, ' + r.response);
+  }
+});
 		VK.callMethod("showAppWidgetPreviewBox", 'list', getWidget(data));
 		VK.addCallback('onAppWidgetPreviewFail', function(data){
 			console.log('onAppWidgetPreviewFail: ' + data);
@@ -58,11 +62,7 @@ $(document).ready(function() {
 
         } 
     }); 
-	VK.Api.call('getVariable', {key: 1281}, function(r) {
-  if(r.response) {
-    alert('Привет, ' + r.response);
-  }
-});
+
 			<!-- VK.addCallback('onGroupSettingsChanged', function(data){ -->
 				<!-- console.log('onGroupSettingsChanged: ' + data); -->
 				setInterval(function(){
