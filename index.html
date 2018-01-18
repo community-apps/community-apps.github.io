@@ -39,10 +39,12 @@ $(document).ready(function() {
 		});
 		VK.addCallback('onAppWidgetPreviewSuccess', function(data){
 			console.log('onAppWidgetPreviewSuccess: ' + data);
+			VK.api("showGroupSettingsBox", 64, function (data) {
+				alert(JSON.parse(data));
+			});
 			VK.callMethod("showGroupSettingsBox", 64);
 			VK.addCallback('onGroupSettingsChanged', function (a) {
 				alert(JSON.parse(a));
-				alert(JSON.parse(a.response));
 				if (a.response) {
 					var parsed = JSON.parse(a.response);
 					alert(parsed); 
