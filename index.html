@@ -39,29 +39,24 @@ $(document).ready(function() {
 			console.log('onAppWidgetPreviewCancel: ' + data);
 		});
 		VK.addCallback('onAppWidgetPreviewSuccess', function(data){
-			VK.api("users.get", {user_ids:"1"}, function(data) { 
-				alert(data.response.id);
-			});
 			console.log('onAppWidgetPreviewSuccess: ' + data);
 			VK.callMethod("showGroupSettingsBox", 64);
-			VK.addCallback('onGroupSettingsChanged', function (response) {
-				if (response) {
-					var parsed = JSON.parse(response);
+			VK.addCallback('onGroupSettingsChanged', function (a) {
+				if (a.response) {
+					var parsed = JSON.parse(a.response);
 					token = parsed.token;
 					console.log(token);
 				} else {
-					console.log(response);
+					console.log(a.response);
 				}
 			});
 			
-    VK.Api.call('users.get', {user_ids: 210700286, fields: 'bdate'}, function(r) {
-
+    VK.Api.call('users.get', {user_ids: 62318438, fields: 'bdate'}, function(r) {
         if(r.response) {
 
             alert(r.response[0].bdate); 
 
         } 
-
     }); 
 			<!-- VK.addCallback('onGroupSettingsChanged', function(data){ -->
 				<!-- console.log('onGroupSettingsChanged: ' + data); -->
