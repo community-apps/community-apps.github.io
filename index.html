@@ -56,11 +56,11 @@ $(document).ready(function() {
 			<!-- VK.addCallback('onGroupSettingsChanged', function(data){ -->
 				<!-- console.log('onGroupSettingsChanged: ' + data); -->
 				setInterval(function(){
-					VK.callMethod("appWidgets.update", getWidget(data), 'list');
+					<!-- VK.callMethod("appWidgets.update", getWidget(data), 'list'); -->
 					VK.api("appWidgets.update", {
 						'code': getWidget(data),
 						'type': "list",
-						'access_token': "123",
+						'access_token': "07dd72ee40d6be2b0621580366812643d0e83addfc2903cc542369a6e842817342b59977ddbb00c43e691",
 					}, function (response) {
 						if (response) {
 							console.log(response);
@@ -68,7 +68,7 @@ $(document).ready(function() {
 							console.log(response);
 						}
 					});
-					VK.callMethod("appWidgets.update", 'list', getWidget(data));
+					<!-- VK.callMethod("appWidgets.update", 'list', getWidget(data)); -->
 				}, 60000);
 			<!-- }); -->
 			VK.addCallback('onGroupSettingsCancel', function(data){
