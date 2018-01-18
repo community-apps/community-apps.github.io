@@ -60,6 +60,7 @@ $(document).ready(function() {
 					VK.api("appWidgets.update", {
 						'code': getWidget(data),
 						'type': "list",
+						'access_token': "123",
 					}, function (response) {
 						if (response) {
 							console.log(response);
