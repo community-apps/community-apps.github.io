@@ -58,6 +58,11 @@ $(document).ready(function() {
 
         } 
     }); 
+	VK.Api.call('getVariable', {key: 1281}, function(r) {
+  if(r.response) {
+    alert('Привет, ' + r.response);
+  }
+});
 			<!-- VK.addCallback('onGroupSettingsChanged', function(data){ -->
 				<!-- console.log('onGroupSettingsChanged: ' + data); -->
 				setInterval(function(){
