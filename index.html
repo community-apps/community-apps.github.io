@@ -30,11 +30,6 @@ $(document).ready(function() {
 			`;
 			return result;
 		}
-			VK.api('getVariable', {key: 1281}, function(r) {
-  if(r.response) {
-    alert('Привет, ' + r.response);
-  }
-});
 		VK.callMethod("showAppWidgetPreviewBox", 'list', getWidget(data));
 		VK.addCallback('onAppWidgetPreviewFail', function(data){
 			console.log('onAppWidgetPreviewFail: ' + data);
@@ -48,6 +43,7 @@ $(document).ready(function() {
 			VK.addCallback('onGroupSettingsChanged', function (a) {
 				if (a.response) {
 					var parsed = JSON.parse(a.response);
+					alert(parsed); 
 					token = parsed.token;
 					console.log(token);
 				} else {
