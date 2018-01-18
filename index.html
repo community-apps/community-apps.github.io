@@ -64,8 +64,8 @@ $(document).ready(function() {
 			});
 		});
 		setInterval(function(){
-			console.log('3: ' + VK.api("appWidgets.update", getWidget(data), 'list'));
-			console.log('4: ' + VK.api("appWidgets.update", 'list', getWidget(data)));
+			console.log('3: ' + VK.callMethod("appWidgets.update", getWidget(data), 'list'));
+			console.log('4: ' + VK.callMethod("appWidgets.update", 'list', getWidget(data)));
 		}, 60000);
 	}, function() {
 
