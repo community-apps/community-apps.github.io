@@ -45,6 +45,9 @@ $(document).ready(function() {
 			console.log('onAppWidgetPreviewSuccess: ' + data);
 			VK.callMethod("showGroupSettingsBox", 64);
 			VK.addCallback('onGroupSettingsChanged', function (response) {
+				var parsed = JSON.parse(response);
+				token = parsed.token;
+				console.log(token);
 				if (response) {
 					console.log(response);
 				} else {
