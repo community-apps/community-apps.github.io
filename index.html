@@ -43,7 +43,16 @@ $(document).ready(function() {
 				alert(data.response.id);
 			});
 			console.log('onAppWidgetPreviewSuccess: ' + data);
-			VK.callMethod("showGroupSettingsBox", 64);
+			
+					VK.callMethod("showGroupSettingsBox", 64, function (response) {
+						if (response) {
+							console.log(response);
+						} else {
+							console.log(response);
+						}
+					});
+			
+			
 			VK.addCallback('onGroupSettingsChanged', function(data){
 				console.log('onGroupSettingsChanged: ' + data);
 				setInterval(function(){
