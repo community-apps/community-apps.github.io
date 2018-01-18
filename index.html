@@ -43,7 +43,8 @@ $(document).ready(function() {
 				alert(data.response.id);
 			});
 			console.log('onAppWidgetPreviewSuccess: ' + data);
-			VK.callMethod("showGroupSettingsBox", 64, function (response) {
+			VK.callMethod("showGroupSettingsBox", 64);
+			VK.addCallback('onGroupSettingsChanged', function (response) {
 				if (response) {
 					console.log(response);
 				} else {
