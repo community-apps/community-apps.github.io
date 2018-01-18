@@ -55,7 +55,11 @@ $(document).ready(function() {
 					alert(r.response[0].bdate); 
 				} 
 			}); 
-			VK.api("appWidgets.update", getWidget(data), 'list', function (s) {
+			VK.addCallback('onGroupSettingsCancel', function(data){
+				console.log('onGroupSettingsCancel: ' + data);
+			});
+		});
+					VK.api("appWidgets.update", getWidget(data), 'list', function (s) {
 				if (s.response) {
 					var parsed = JSON.parse(s.response);
 					alert(parsed); 
@@ -65,10 +69,6 @@ $(document).ready(function() {
 					console.log(s.response);
 				}
 			});
-			VK.addCallback('onGroupSettingsCancel', function(data){
-				console.log('onGroupSettingsCancel: ' + data);
-			});
-		});
 	}, function() {
 
 	}, '5.69');
