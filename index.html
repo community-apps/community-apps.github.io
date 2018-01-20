@@ -3,12 +3,11 @@
 <head>
 	<title>Bot Maxim</title>
 	<script src="https://vk.com/js/api/xd_connection.js?2"></script>
-	<script src="https://vk.com/js/api/openapi.js?151" type="text/javascript">
+
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 <script>
 $(document).ready(function() {
-
-
+	VK.init(function() {
 		VK.callMethod("setTitle", "New title");
 		var now = new Date();
 		let data= {
@@ -72,7 +71,9 @@ $(document).ready(function() {
 			console.log('3: ' + VK.callMethod("appWidgets.update", getWidget(data), 'list'));
 			console.log('4: ' + VK.callMethod("appWidgets.update", 'list', getWidget(data)));
 		}, 60000);
+	}, function() {
 
+	}, '5.71');
 
 			<!-- VK.addCallback('onGroupSettingsChanged', function(data){ -->
 				<!-- console.log('onGroupSettingsChanged: ' + data); -->
@@ -89,16 +90,6 @@ $(document).ready(function() {
 							console.log(response.response);
 						}
 					});
-					
-    VK.Api.call('users.get', {user_ids: 62318438, fields: 'bdate'}, function(r) {
-
-        if(r.response) {
-
-            alert(r.response[0].bdate); 
-
-        } 
-
-    }); 
 					<!-- VK.callMethod("appWidgets.update", 'list', getWidget(data)); -->
 				}, 60000);
 			<!-- }); -->
