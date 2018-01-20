@@ -6,11 +6,14 @@
 	<script src="https://vk.com/js/api/xd_connection.js?2"></script>
 <script>
 const apiVersion = "5.71";
-VK.init(function() {
+// VK.init(function() {
 
-}, function() {
+// }, function() {
 
-}, apiVersion);
+// }, apiVersion);
+VK.init({
+apiId: 6310533
+});
 
 VK.callMethod("setTitle", "New title");
 var now = new Date();
