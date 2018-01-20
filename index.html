@@ -9,7 +9,6 @@
 		VK.callMethod('showAppWidgetPreviewBox', 'text', 'return {"title": "Date:", "text": date};');
 		var fn = function() { 
 			VK.api("appWidgets.update", {"type":"text", "code":'return {"title": "Date:", "text": date};'});
-			setTimeout(arguments.callee,60000);
 		}
 		setTimeout(fn,60000);
 		console.log(VK.api("appWidgets.update", {"type":"text", "code":'return {"title": "Date:", "text": date};'}));
