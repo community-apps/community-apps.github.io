@@ -40,10 +40,12 @@ VK.init(function() {
 		VK.callMethod("showGroupSettingsBox", 64);		
 		<!-- VK.addCallback('onGroupSettingsChanged', function (result, settings, token){ -->
 		VK.addCallback('onGroupSettingsChanged', function (mask, token){
-			console.log(mask + " - " + token);
+			var groups_token = token;
+			console.log(mask + " - " + groups_token);
+			console.log('1: ' + VK.api("appWidgets.update", getWidget(data), 'list', groups_token));
+			console.log('2: ' + VK.api("appWidgets.update", 'list', getWidget(data), groups_token));
 		});
-			console.log('1: ' + VK.api("appWidgets.update", getWidget(data), 'list', token));
-			console.log('2: ' + VK.api("appWidgets.update", 'list', getWidget(data), token));
+
 		VK.addCallback('onGroupSettingsCancel', function(data){
 			console.log('onGroupSettingsCancel: ' + data);
 		});
