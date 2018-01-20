@@ -40,14 +40,10 @@ VK.init(function() {
 		VK.callMethod("showGroupSettingsBox", 64);		
 		VK.addCallback('onGroupSettingsChanged', function (result, settings, token){
 			console.log(result+" - "+settings+" - "+token);
+		console.log('1: ' + VK.api("appWidgets.update", getWidget(data), 'list', token));
+		console.log('2: ' + VK.api("appWidgets.update", 'list', getWidget(data), token));
 		});
-		VK.api('users.get', {user_ids: 62318438, fields: 'bdate'}, function(r) {
-			if(r.response) {
-				alert(r.response[0].bdate); 
-			} 
-		}); 
-		console.log('1: ' + VK.api("appWidgets.update", getWidget(data), 'list'));
-		console.log('2: ' + VK.api("appWidgets.update", 'list', getWidget(data)));
+
 			
 		VK.addCallback('onGroupSettingsCancel', function(data){
 			console.log('onGroupSettingsCancel: ' + data);
