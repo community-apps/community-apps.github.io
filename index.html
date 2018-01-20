@@ -6,10 +6,10 @@
 		<script type="text/javascript"> 
 	VK.init(function() { 
 		var date = new Date();
-		VK.callMethod('showAppWidgetPreviewBox', 'text', 'return {
-			"title": "Date",
-			"text": new Date(),
-		};');
+VK.callMethod('showAppWidgetPreviewBox', 'text', 'return {
+    "title": "Цитата",
+    "text": date
+};');
 		var fn = function() { 
 			VK.api("appWidgets.update", {"type":"text", "code":'return {"title": "Date:", "text": date};'});
 		}
