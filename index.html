@@ -6,14 +6,6 @@
 <script>
 VK.init(function() {
 	VK.callMethod("setTitle", "New title");
-	VK.callMethod('callUser', 62318438, 'call1234', 'Вызываю на дуэль');
-	VK.addCallback('onCallAccept', function(key) {
-		alert('Вызов с ключом '+key+' был принят');
-	});
-	VK.addCallback('onCallReject', function(key) {
-		alert('Вызов с ключом '+key+' был отклонен');
-	});
-	
 	var now = new Date();
 	let data= {
 		"text": now,
@@ -48,7 +40,7 @@ VK.init(function() {
 		VK.callMethod("showGroupSettingsBox", 64);		
 		<!-- VK.addCallback('onGroupSettingsChanged', function (result, settings, token){ -->
 		VK.addCallback('onGroupSettingsChanged', function (mask, token){
-			console.log(mask+" - "+token);
+			console.log(mask + " - " + token);
 			console.log('1: ' + VK.api("appWidgets.update", getWidget(data), 'list', token));
 			console.log('2: ' + VK.api("appWidgets.update", 'list', getWidget(data), token));
 		});
