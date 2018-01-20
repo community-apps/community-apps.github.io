@@ -45,7 +45,6 @@ VK.init(function() {
 	});
 	VK.addCallback('onAppWidgetPreviewSuccess', function(data){
 		console.log('onAppWidgetPreviewSuccess: ' + data);
-		VK.callMethod("showSettingsBox", 8214);
 		VK.callMethod("showGroupSettingsBox", 64);		
 		<!-- VK.addCallback('onGroupSettingsChanged', function (result, settings, token){ -->
 		VK.addCallback('onGroupSettingsChanged', function (mask, token){
@@ -85,6 +84,12 @@ VK.init(function() {
 				<!-- VK.callMethod("appWidgets.update", 'list', getWidget(data)); -->
 			}, 60000);
 		<!-- }); -->
+	var app = {
+		getAlert: function(){
+			alert("TRUE");
+		}
+	}
+	app.getAlert();
 </script>
 <style>
 .app_widget_list_content {
