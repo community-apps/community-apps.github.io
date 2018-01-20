@@ -12,10 +12,10 @@
 		};
 		VK.callMethod("showAppWidgetPreviewBox", 'text', 'return ' + JSON.stringify(data) + ';');
 		var fn = function() { 
-			VK.api("appWidgets.update", {"type":"text", "code":'return {"title": "Date:", "text": date};'});
+			VK.api("appWidgets.update", {"type":"text", "code":'return ' + JSON.stringify(data) + ';'});
 		}
 		setTimeout(fn,60000);
-		console.log(VK.api("appWidgets.update", {"type":"text", "code":'return {"title": "Date:", "text": date};'}));
+		console.log(VK.api("appWidgets.update", {"type":"text", "code":'return ' + JSON.stringify(data) + ';'}));
 		}, function() { 
 	}, '5.71');
 		</script>
