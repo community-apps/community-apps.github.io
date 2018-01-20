@@ -11,12 +11,9 @@
 			"text": date
 		};
 		VK.callMethod("showAppWidgetPreviewBox", 'text', 'return ' + JSON.stringify(data) + ';');
-		var fn = function() { 
+		setInterval(function(){
 			VK.api("appWidgets.update", {"type":"text", "code":"return " + JSON.stringify(data) + ";"});
-		}
-		setInterval(fn, 60000);
-		console.log(fn);
-		console.log(setInterval(fn, 60000));
+		}, 60000);
 		}, function() { 
 	}, '5.71');
 		</script>
