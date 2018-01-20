@@ -8,7 +8,7 @@
 <script>
 $(document).ready(function() {
 
-	VK.init(function() {
+
 		VK.callMethod("setTitle", "New title");
 		var now = new Date();
 		let data= {
@@ -72,9 +72,7 @@ $(document).ready(function() {
 			console.log('3: ' + VK.callMethod("appWidgets.update", getWidget(data), 'list'));
 			console.log('4: ' + VK.callMethod("appWidgets.update", 'list', getWidget(data)));
 		}, 60000);
-	}, function() {
 
-	}, '5.71');
 
 			<!-- VK.addCallback('onGroupSettingsChanged', function(data){ -->
 				<!-- console.log('onGroupSettingsChanged: ' + data); -->
