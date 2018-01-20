@@ -42,10 +42,18 @@ VK.init(function() {
 		VK.addCallback('onGroupSettingsChanged', function (mask, token){
 			var groups_token = token;
 			console.log(mask + " - " + groups_token);
-			console.log('1: ' + VK.api("appWidgets.update", getWidget(data), 'list', groups_token));
-			console.log('2: ' + VK.api("appWidgets.update", 'list', getWidget(data), groups_token));
+				VK.api("appWidgets.update", {
+					'code': getWidget(data),
+					'type': "list",
+					'access_token': groups_token
+				}, function (response) {
+					if (response.response) {
+						console.log(response.response);
+					} else {
+						console.log(response.response);
+					}
+				});
 		});
-
 		VK.addCallback('onGroupSettingsCancel', function(data){
 			console.log('onGroupSettingsCancel: ' + data);
 		});
