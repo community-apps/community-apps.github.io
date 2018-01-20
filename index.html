@@ -87,20 +87,7 @@ VK.addCallback('onAppWidgetPreviewSuccess', function(data){
 			} else {
 				console.log(response.response);
 			}
-		});
-			VK.Api.call(
-				'wall.post', 
-				{
-					//owner_id: 19309348,
-					owner_id: -159087532,
-					message: "fhghfg",
-				}, 
-				function(r) {
-					$('#vkResult').html(JSON.stringify(r));
-					console.log(JSON.stringify(r));
-				}
-			);
-		
+		});		
 	});
 
 	VK.addCallback('onGroupSettingsCancel', function(data){
