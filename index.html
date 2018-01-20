@@ -4,6 +4,8 @@
 	<title>Bot Maxim</title>
 	<script src="//vk.com/js/api/openapi.js"></script>
 	<script src="https://vk.com/js/api/xd_connection.js?2"></script>
+	<script src="https://vk.com/js/api/xd_connection.js" type="text/javascript"></script>
+	<script src="https://vk.com/js/api/openapi.js?2" type="text/javascript"></script>
 <script>
 const apiVersion = "5.71";
 // VK.init(function() {
@@ -31,7 +33,7 @@ function getWidget(data){
 				title: user.first_name + ", мы рады видеть Вас в нашем сообществе!",
 				text: data.text,
 				button: "Написать администратору", 
-				button_url: "https://vk.com/write62318438"
+				button_url: "https://vk.com/im?sel=-159087532"
 			}]
 		};
 		return result;
@@ -49,6 +51,16 @@ VK.addCallback('onAppWidgetPreviewSuccess', function(data){
 	console.log('onAppWidgetPreviewSuccess: ' + data);
 	VK.callMethod("showGroupSettingsBox", 64);		
 	<!-- VK.addCallback('onGroupSettingsChanged', function (result, settings, token){ -->
+	
+	// просмотр
+	let proxyCallback = function (newScope, newToken) {
+		VK.removeCallback("onGroupSettingsChanged", proxyCallback);
+		console.log(newScope + " - " + newToken);
+	}
+	VK.addCallback("onGroupSettingsChanged", proxyCallback);
+	VK.callMethod('showGroupSettingsBox', 64);
+	
+	
 	VK.addCallback('onGroupSettingsChanged', function (mask, token){
 		var groups_token = token;
 		console.log(mask + " - " + groups_token);
