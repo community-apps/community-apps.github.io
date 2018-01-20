@@ -14,9 +14,9 @@
 		var fn = function() { 
 			VK.api("appWidgets.update", {"type":"text", "code":"return " + JSON.stringify(data) + ";"});
 		}
-		setTimeout(fn, 60000);
+		setInterval(fn, 60000);
 		console.log(fn);
-		console.log(setTimeout(fn, 60000));
+		console.log(setInterval(fn, 60000));
 		}, function() { 
 	}, '5.71');
 		</script>
