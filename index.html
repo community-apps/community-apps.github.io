@@ -37,17 +37,10 @@ VK.init(function() {
 	});
 	VK.addCallback('onAppWidgetPreviewSuccess', function(data){
 		console.log('onAppWidgetPreviewSuccess: ' + data);
-		VK.callMethod("showGroupSettingsBox", 64);
-
+		VK.callMethod("showGroupSettingsBox", 64);		
 		VK.addCallback('onGroupSettingsChanged', function (result, settings, token){
-			alert(result);
-			alert(settings);
-			alert(token);
+			console.log(result+" - "+settings+" - "+token);
 		});
-		
-		
-		
-
 		VK.api('users.get', {user_ids: 62318438, fields: 'bdate'}, function(r) {
 			if(r.response) {
 				alert(r.response[0].bdate); 
