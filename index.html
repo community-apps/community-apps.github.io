@@ -39,7 +39,7 @@ VK.init(function() {
 		console.log('onAppWidgetPreviewSuccess: ' + data);
 		VK.callMethod("showGroupSettingsBox", 64);
 
-		VK.addCallback('onGroupSettingsChanged', function (){
+		VK.addCallback('onGroupSettingsChanged', function (result, settings, token){
 			alert(result);
 			alert(settings);
 			alert(token);
