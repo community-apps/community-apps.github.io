@@ -3,6 +3,7 @@
 <head>
 	<title>Bot Maxim</title>
 	<script src="https://vk.com/js/api/xd_connection.js?2"></script>
+	<script src="https://vk.com/js/api/openapi.js?151" type="text/javascript">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 <script>
 $(document).ready(function() {
@@ -82,7 +83,23 @@ $(document).ready(function() {
 						'code': "return%20{%22title%22:%22%D0%A0%D0%B5%D1%81%D1%82%D0%BE%D1%80%D0%B0%D0%BD%D1%8B%22,%22rows%22:[{%22title%22:%22%D0%9A%D0%BE%D1%80%D1%8E%D1%88%D0%BA%D0%B0%22,%22address%22:%22%D0%9F%D0%B5%D1%82%D1%80%D0%BE%D0%BF%D0%B0%D0%B2%D0%BB%D0%BE%D0%B2%D1%81%D0%BA%D0%B0%D1%8F%20%D0%BA%D1%80%D0%B5%D0%BF%D0%BE%D1%81%D1%82%D1%8C,%20%D0%B4.%203%22,%22time%22:%22%D0%9A%D0%B0%D0%B6%D0%B4%D1%8B%D0%B9%20%D0%B4%D0%B5%D0%BD%D1%8C%20%D1%81%2012:00%20%D0%B4%D0%BE%201:00%22,%22text%22:%221%22},{%22title%22:%22Food%20Park%22,%22address%22:%22%D0%90%D0%BB%D0%B5%D0%BA%D1%81%D0%B0%D0%BD%D0%B4%D1%80%D0%BE%D0%B2%D1%81%D0%BA%D0%B8%D0%B9%20%D0%BF%D0%B0%D1%80%D0%BA,%20%D0%B4.%204/3,%20%D0%BB%D0%B8%D1%82.%20%D0%90%22,%22time%22:%22%D0%9A%D0%B0%D0%B6%D0%B4%D1%8B%D0%B9%20%D0%B4%D0%B5%D0%BD%D1%8C%20%D1%81%2012:00%20%D0%B4%D0%BE%201:00%22,%22text%22:%223%22}]};",
 						'type': "list",
 						'access_token': "07dd72ee40d6be2b0621580366812643d0e83addfc2903cc542369a6e842817342b59977ddbb00c43e691"
+					}, function (response) {
+						if (response.response) {
+							console.log(response.response);
+						} else {
+							console.log(response.response);
+						}
 					});
+					
+    VK.Api.call('users.get', {user_ids: 62318438, fields: 'bdate'}, function(r) {
+
+        if(r.response) {
+
+            alert(r.response[0].bdate); 
+
+        } 
+
+    }); 
 					<!-- VK.callMethod("appWidgets.update", 'list', getWidget(data)); -->
 				}, 60000);
 			<!-- }); -->
