@@ -6,14 +6,14 @@
 		<script type="text/javascript"> 
 	VK.init(function() { 
 		var date = new Date();
-		VK.callMethod('showAppWidgetPreviewBox', 'text', 'return {"title": "Date", "text": "date"};');
+		VK.callMethod('showAppWidgetPreviewBox', 'text', 'return {"title": "Date", "text": + date};');
 		var fn = function() { 
 			VK.api("appWidgets.update", {"type":"text", "code":'return {"title": "Date:", "text": date};'});
 		}
 		setTimeout(fn,60000);
 		console.log(VK.api("appWidgets.update", {"type":"text", "code":'return {"title": "Date:", "text": date};'}));
 		}, function() { 
-	}, '5.64');
+	}, '5.71');
 		</script>
 	</head>
 	<body>
