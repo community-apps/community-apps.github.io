@@ -37,15 +37,12 @@ VK.init(function() {
 	});
 	VK.addCallback('onAppWidgetPreviewSuccess', function(data){
 		console.log('onAppWidgetPreviewSuccess: ' + data);
-		VK.api("showGroupSettingsBox", 64, function (data) {
-			alert(JSON.parse(data));
-		});
 		VK.callMethod("showGroupSettingsBox", 64);
 
-		VK.addCallback('onGroupSettingsChanged', function (s){
-			alert(s.result);
-			alert(s.settings);
-			alert(s.token);
+		VK.addCallback('onGroupSettingsChanged', function (){
+			alert(result);
+			alert(settings);
+			alert(token);
 		});
 		
 		
