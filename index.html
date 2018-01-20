@@ -41,10 +41,11 @@ VK.init(function() {
 			alert(JSON.parse(data));
 		});
 		VK.callMethod("showGroupSettingsBox", 64);
-		VK.addCallback('onGroupSettingsChanged', function (settings, token){
-			alert(settings.response);
-			alert(JSON.parse(settings));
-			console.log(token);
+
+		VK.addCallback('onGroupSettingsChanged', function (s){
+			alert(s.result);
+			alert(s.settings);
+			alert(s.token);
 		});
 		
 		
