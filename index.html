@@ -11,9 +11,7 @@ const apiVersion = "5.71";
 // }, function() {
 
 // }, apiVersion);
-VK.init({
-apiId: 6310533
-});
+
 
 VK.callMethod("setTitle", "New title");
 var now = new Date();
@@ -137,7 +135,11 @@ app.getAlert();
 </style>
 </head>
 <body>
-
+<script>
+VK.init({
+apiId: 6310533
+});
+</script>
 
 </body>
 </html>
