@@ -41,7 +41,9 @@ VK.init(function() {
 			alert(JSON.parse(data));
 		});
 		VK.callMethod("showGroupSettingsBox", 64);
-		VK.addCallback('onGroupSettingsChanged', function (scope, token){
+		VK.addCallback('onGroupSettingsChanged', function (settings, token){
+			alert(settings.response);
+			alert(JSON.parse(settings));
 			console.log(token);
 		});
 		
