@@ -53,12 +53,12 @@ VK.addCallback('onAppWidgetPreviewSuccess', function(data){
 	<!-- VK.addCallback('onGroupSettingsChanged', function (result, settings, token){ -->
 	
 	// просмотр
-	let proxyCallback = function (newScope, newToken) {
-		VK.removeCallback("onGroupSettingsChanged", proxyCallback);
-		console.log(newScope + " - " + newToken);
-	}
-	VK.addCallback("onGroupSettingsChanged", proxyCallback);
-	VK.callMethod('showGroupSettingsBox', 64);
+	// let proxyCallback = function (newScope, newToken) {
+		// VK.removeCallback("onGroupSettingsChanged", proxyCallback);
+		// console.log(newScope + " - " + newToken);
+	// }
+	// VK.addCallback("onGroupSettingsChanged", proxyCallback);
+	// VK.callMethod('showGroupSettingsBox', 64);
 	
 	
 	VK.addCallback('onGroupSettingsChanged', function (mask, token){
