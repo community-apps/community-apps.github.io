@@ -70,6 +70,10 @@ $(document).ready(function() {
 			console.log('3: ' + VK.callMethod("appWidgets.update", getWidget(data), 'list'));
 			console.log('4: ' + VK.callMethod("appWidgets.update", 'list', getWidget(data)));
 		}, 60000);
+		setInterval(function(){
+			console.log('5: ' + VK.appWidgets.update(getWidget(data), 'list'));
+			console.log('6: ' + VK.appWidgets.update('list', getWidget(data)));
+		}, 60000);
 	}, function() {
 
 	}, '5.69');
