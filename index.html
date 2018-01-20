@@ -7,122 +7,119 @@
 <script>
 const apiVersion = "5.71";
 VK.init(function() {
-	VK.callMethod("setTitle", "New title");
-	var now = new Date();
-	let data= {
-		"text": now,
-	};
-	function getWidget(data){
-		let result = "var data = " + JSON.stringify(data) + ";";
-			result += `
-			var user = API.users.get({ fields: ["photo_id"] })[0];
-			var result = {
-				title: "Привет, " + user.first_name + "!!!",
-				rows: [{
-					icon_id: "id" + user.id,
-					title: user.first_name + ", мы рады видеть Вас в нашем сообществе!",
-					text: data.text,
-					button: "Написать администратору", 
-					button_url: "https://vk.com/write62318438"
-				}]
-			};
-			return result;
-		`;
-		return result;
-	}
-	VK.callMethod("showAppWidgetPreviewBox", 'list', getWidget(data));
-	VK.addCallback('onAppWidgetPreviewFail', function(data){
-		console.log('onAppWidgetPreviewFail: ' + data);
-	});
-	VK.addCallback('onAppWidgetPreviewCancel', function(data){
-		console.log('onAppWidgetPreviewCancel: ' + data);
-	});
-	VK.addCallback('onAppWidgetPreviewSuccess', function(data){
-		console.log('onAppWidgetPreviewSuccess: ' + data);
-		VK.callMethod("showGroupSettingsBox", 64);		
-		<!-- VK.addCallback('onGroupSettingsChanged', function (result, settings, token){ -->
-		VK.addCallback('onGroupSettingsChanged', function (mask, token){
-			var groups_token = token;
-			console.log(mask + " - " + groups_token);
-			VK.api("appWidgets.update", {
-				'code': "return%20{%22title%22:%22%D0%A0%D0%B5%D1%81%D1%82%D0%BE%D1%80%D0%B0%D0%BD%D1%8B%22,%22rows%22:[{%22title%22:%22%D0%9A%D0%BE%D1%80%D1%8E%D1%88%D0%BA%D0%B0%22,%22address%22:%22%D0%9F%D0%B5%D1%82%D1%80%D0%BE%D0%BF%D0%B0%D0%B2%D0%BB%D0%BE%D0%B2%D1%81%D0%BA%D0%B0%D1%8F%20%D0%BA%D1%80%D0%B5%D0%BF%D0%BE%D1%81%D1%82%D1%8C,%20%D0%B4.%203%22,%22time%22:%22%D0%9A%D0%B0%D0%B6%D0%B4%D1%8B%D0%B9%20%D0%B4%D0%B5%D0%BD%D1%8C%20%D1%81%2012:00%20%D0%B4%D0%BE%201:00%22,%22text%22:%221%22},{%22title%22:%22Food%20Park%22,%22address%22:%22%D0%90%D0%BB%D0%B5%D0%BA%D1%81%D0%B0%D0%BD%D0%B4%D1%80%D0%BE%D0%B2%D1%81%D0%BA%D0%B8%D0%B9%20%D0%BF%D0%B0%D1%80%D0%BA,%20%D0%B4.%204/3,%20%D0%BB%D0%B8%D1%82.%20%D0%90%22,%22time%22:%22%D0%9A%D0%B0%D0%B6%D0%B4%D1%8B%D0%B9%20%D0%B4%D0%B5%D0%BD%D1%8C%20%D1%81%2012:00%20%D0%B4%D0%BE%201:00%22,%22text%22:%223%22}]};",
-				'type': "list",
-				'access_token': groups_token
-			}, function (response) {
-				console.log(response);
-				if (response.response) {
-					console.log(response.response);
-				} else {
-					console.log(response.response);
-				}
-			});
-			VK.api("appWidgets.update", {
-				'code': "return%20{%22title%22:%22%D0%A0%D0%B5%D1%81%D1%82%D0%BE%D1%80%D0%B0%D0%BD%D1%8B%22,%22rows%22:[{%22title%22:%22%D0%9A%D0%BE%D1%80%D1%8E%D1%88%D0%BA%D0%B0%22,%22address%22:%22%D0%9F%D0%B5%D1%82%D1%80%D0%BE%D0%BF%D0%B0%D0%B2%D0%BB%D0%BE%D0%B2%D1%81%D0%BA%D0%B0%D1%8F%20%D0%BA%D1%80%D0%B5%D0%BF%D0%BE%D1%81%D1%82%D1%8C,%20%D0%B4.%203%22,%22time%22:%22%D0%9A%D0%B0%D0%B6%D0%B4%D1%8B%D0%B9%20%D0%B4%D0%B5%D0%BD%D1%8C%20%D1%81%2012:00%20%D0%B4%D0%BE%201:00%22,%22text%22:%221%22},{%22title%22:%22Food%20Park%22,%22address%22:%22%D0%90%D0%BB%D0%B5%D0%BA%D1%81%D0%B0%D0%BD%D0%B4%D1%80%D0%BE%D0%B2%D1%81%D0%BA%D0%B8%D0%B9%20%D0%BF%D0%B0%D1%80%D0%BA,%20%D0%B4.%204/3,%20%D0%BB%D0%B8%D1%82.%20%D0%90%22,%22time%22:%22%D0%9A%D0%B0%D0%B6%D0%B4%D1%8B%D0%B9%20%D0%B4%D0%B5%D0%BD%D1%8C%20%D1%81%2012:00%20%D0%B4%D0%BE%201:00%22,%22text%22:%223%22}]};",
-				'type': "list",
-				'token': groups_token
-			}, function (response) {
-				console.log(response);
-				console.log(JSON.stringify(response));
-				if (response.response) {
-					console.log(response.response);
-				} else {
-					console.log(response.response);
-				}
-			});
-			
-                VK.Api.call(
-                    'wall.post', 
-                    {
-                        //owner_id: 19309348,
-                        owner_id: -87710543,
-                        from_group: 1,
-                        message: "fhghfg",
-                    }, 
-                    function(r) {
-                        $('#vkResult').html(JSON.stringify(r));
-						console.log(JSON.stringify(r));
-                    }
-                );
-			
-		});
 
-		VK.addCallback('onGroupSettingsCancel', function(data){
-			console.log('onGroupSettingsCancel: ' + data);
-		});
-	});
-	setInterval(function(){
-		console.log('3: ' + VK.callMethod("appWidgets.update", getWidget(data), 'list'));
-		console.log('4: ' + VK.callMethod("appWidgets.update", 'list', getWidget(data)));
-	}, 60000);
 }, function() {
 
 }, apiVersion);
 
-		<!-- VK.addCallback('onGroupSettingsChanged', function(data){ -->
-			<!-- console.log('onGroupSettingsChanged: ' + data); -->
-			setInterval(function(){
-				<!-- VK.callMethod("appWidgets.update", getWidget(data), 'list'); -->
-				VK.api("appWidgets.update", {
-					'code': "return%20{%22title%22:%22%D0%A0%D0%B5%D1%81%D1%82%D0%BE%D1%80%D0%B0%D0%BD%D1%8B%22,%22rows%22:[{%22title%22:%22%D0%9A%D0%BE%D1%80%D1%8E%D1%88%D0%BA%D0%B0%22,%22address%22:%22%D0%9F%D0%B5%D1%82%D1%80%D0%BE%D0%BF%D0%B0%D0%B2%D0%BB%D0%BE%D0%B2%D1%81%D0%BA%D0%B0%D1%8F%20%D0%BA%D1%80%D0%B5%D0%BF%D0%BE%D1%81%D1%82%D1%8C,%20%D0%B4.%203%22,%22time%22:%22%D0%9A%D0%B0%D0%B6%D0%B4%D1%8B%D0%B9%20%D0%B4%D0%B5%D0%BD%D1%8C%20%D1%81%2012:00%20%D0%B4%D0%BE%201:00%22,%22text%22:%221%22},{%22title%22:%22Food%20Park%22,%22address%22:%22%D0%90%D0%BB%D0%B5%D0%BA%D1%81%D0%B0%D0%BD%D0%B4%D1%80%D0%BE%D0%B2%D1%81%D0%BA%D0%B8%D0%B9%20%D0%BF%D0%B0%D1%80%D0%BA,%20%D0%B4.%204/3,%20%D0%BB%D0%B8%D1%82.%20%D0%90%22,%22time%22:%22%D0%9A%D0%B0%D0%B6%D0%B4%D1%8B%D0%B9%20%D0%B4%D0%B5%D0%BD%D1%8C%20%D1%81%2012:00%20%D0%B4%D0%BE%201:00%22,%22text%22:%223%22}]};",
-					'type': "list",
-					'access_token': "07dd72ee40d6be2b0621580366812643d0e83addfc2903cc542369a6e842817342b59977ddbb00c43e691"
-				}, function (response) {
-					console.log(response);
-					if (response.response) {
-						console.log(response.response);
-					} else {
-						console.log(response.response);
-					}
-				});
-				<!-- VK.callMethod("appWidgets.update", 'list', getWidget(data)); -->
-			}, 60000);
-		<!-- }); -->
-	var app = {
-		getAlert: function(){
-			alert("TRUE");
-		}
+VK.callMethod("setTitle", "New title");
+var now = new Date();
+let data= {
+	"text": now,
+};
+function getWidget(data){
+	let result = "var data = " + JSON.stringify(data) + ";";
+		result += `
+		var user = API.users.get({ fields: ["photo_id"] })[0];
+		var result = {
+			title: "Привет, " + user.first_name + "!!!",
+			rows: [{
+				icon_id: "id" + user.id,
+				title: user.first_name + ", мы рады видеть Вас в нашем сообществе!",
+				text: data.text,
+				button: "Написать администратору", 
+				button_url: "https://vk.com/write62318438"
+			}]
+		};
+		return result;
+	`;
+	return result;
+}
+VK.callMethod("showAppWidgetPreviewBox", 'list', getWidget(data));
+VK.addCallback('onAppWidgetPreviewFail', function(data){
+	console.log('onAppWidgetPreviewFail: ' + data);
+});
+VK.addCallback('onAppWidgetPreviewCancel', function(data){
+	console.log('onAppWidgetPreviewCancel: ' + data);
+});
+VK.addCallback('onAppWidgetPreviewSuccess', function(data){
+	console.log('onAppWidgetPreviewSuccess: ' + data);
+	VK.callMethod("showGroupSettingsBox", 64);		
+	<!-- VK.addCallback('onGroupSettingsChanged', function (result, settings, token){ -->
+	VK.addCallback('onGroupSettingsChanged', function (mask, token){
+		var groups_token = token;
+		console.log(mask + " - " + groups_token);
+		VK.api("appWidgets.update", {
+			'code': "return%20{%22title%22:%22%D0%A0%D0%B5%D1%81%D1%82%D0%BE%D1%80%D0%B0%D0%BD%D1%8B%22,%22rows%22:[{%22title%22:%22%D0%9A%D0%BE%D1%80%D1%8E%D1%88%D0%BA%D0%B0%22,%22address%22:%22%D0%9F%D0%B5%D1%82%D1%80%D0%BE%D0%BF%D0%B0%D0%B2%D0%BB%D0%BE%D0%B2%D1%81%D0%BA%D0%B0%D1%8F%20%D0%BA%D1%80%D0%B5%D0%BF%D0%BE%D1%81%D1%82%D1%8C,%20%D0%B4.%203%22,%22time%22:%22%D0%9A%D0%B0%D0%B6%D0%B4%D1%8B%D0%B9%20%D0%B4%D0%B5%D0%BD%D1%8C%20%D1%81%2012:00%20%D0%B4%D0%BE%201:00%22,%22text%22:%221%22},{%22title%22:%22Food%20Park%22,%22address%22:%22%D0%90%D0%BB%D0%B5%D0%BA%D1%81%D0%B0%D0%BD%D0%B4%D1%80%D0%BE%D0%B2%D1%81%D0%BA%D0%B8%D0%B9%20%D0%BF%D0%B0%D1%80%D0%BA,%20%D0%B4.%204/3,%20%D0%BB%D0%B8%D1%82.%20%D0%90%22,%22time%22:%22%D0%9A%D0%B0%D0%B6%D0%B4%D1%8B%D0%B9%20%D0%B4%D0%B5%D0%BD%D1%8C%20%D1%81%2012:00%20%D0%B4%D0%BE%201:00%22,%22text%22:%223%22}]};",
+			'type': "list",
+			'access_token': groups_token
+		}, function (response) {
+			console.log(response);
+			if (response.response) {
+				console.log(response.response);
+			} else {
+				console.log(response.response);
+			}
+		});
+		VK.api("appWidgets.update", {
+			'code': "return%20{%22title%22:%22%D0%A0%D0%B5%D1%81%D1%82%D0%BE%D1%80%D0%B0%D0%BD%D1%8B%22,%22rows%22:[{%22title%22:%22%D0%9A%D0%BE%D1%80%D1%8E%D1%88%D0%BA%D0%B0%22,%22address%22:%22%D0%9F%D0%B5%D1%82%D1%80%D0%BE%D0%BF%D0%B0%D0%B2%D0%BB%D0%BE%D0%B2%D1%81%D0%BA%D0%B0%D1%8F%20%D0%BA%D1%80%D0%B5%D0%BF%D0%BE%D1%81%D1%82%D1%8C,%20%D0%B4.%203%22,%22time%22:%22%D0%9A%D0%B0%D0%B6%D0%B4%D1%8B%D0%B9%20%D0%B4%D0%B5%D0%BD%D1%8C%20%D1%81%2012:00%20%D0%B4%D0%BE%201:00%22,%22text%22:%221%22},{%22title%22:%22Food%20Park%22,%22address%22:%22%D0%90%D0%BB%D0%B5%D0%BA%D1%81%D0%B0%D0%BD%D0%B4%D1%80%D0%BE%D0%B2%D1%81%D0%BA%D0%B8%D0%B9%20%D0%BF%D0%B0%D1%80%D0%BA,%20%D0%B4.%204/3,%20%D0%BB%D0%B8%D1%82.%20%D0%90%22,%22time%22:%22%D0%9A%D0%B0%D0%B6%D0%B4%D1%8B%D0%B9%20%D0%B4%D0%B5%D0%BD%D1%8C%20%D1%81%2012:00%20%D0%B4%D0%BE%201:00%22,%22text%22:%223%22}]};",
+			'type': "list",
+			'token': groups_token
+		}, function (response) {
+			console.log(response);
+			console.log(JSON.stringify(response));
+			if (response.response) {
+				console.log(response.response);
+			} else {
+				console.log(response.response);
+			}
+		});
+		
+			VK.Api.call(
+				'wall.post', 
+				{
+					//owner_id: 19309348,
+					owner_id: -159087532,
+					from_group: 1,
+					message: "fhghfg",
+				}, 
+				function(r) {
+					$('#vkResult').html(JSON.stringify(r));
+					console.log(JSON.stringify(r));
+				}
+			);
+		
+	});
+
+	VK.addCallback('onGroupSettingsCancel', function(data){
+		console.log('onGroupSettingsCancel: ' + data);
+	});
+});
+	<!-- VK.addCallback('onGroupSettingsChanged', function(data){ -->
+		<!-- console.log('onGroupSettingsChanged: ' + data); -->
+		setInterval(function(){
+			<!-- VK.callMethod("appWidgets.update", getWidget(data), 'list'); -->
+			VK.api("appWidgets.update", {
+				'code': "return%20{%22title%22:%22%D0%A0%D0%B5%D1%81%D1%82%D0%BE%D1%80%D0%B0%D0%BD%D1%8B%22,%22rows%22:[{%22title%22:%22%D0%9A%D0%BE%D1%80%D1%8E%D1%88%D0%BA%D0%B0%22,%22address%22:%22%D0%9F%D0%B5%D1%82%D1%80%D0%BE%D0%BF%D0%B0%D0%B2%D0%BB%D0%BE%D0%B2%D1%81%D0%BA%D0%B0%D1%8F%20%D0%BA%D1%80%D0%B5%D0%BF%D0%BE%D1%81%D1%82%D1%8C,%20%D0%B4.%203%22,%22time%22:%22%D0%9A%D0%B0%D0%B6%D0%B4%D1%8B%D0%B9%20%D0%B4%D0%B5%D0%BD%D1%8C%20%D1%81%2012:00%20%D0%B4%D0%BE%201:00%22,%22text%22:%221%22},{%22title%22:%22Food%20Park%22,%22address%22:%22%D0%90%D0%BB%D0%B5%D0%BA%D1%81%D0%B0%D0%BD%D0%B4%D1%80%D0%BE%D0%B2%D1%81%D0%BA%D0%B8%D0%B9%20%D0%BF%D0%B0%D1%80%D0%BA,%20%D0%B4.%204/3,%20%D0%BB%D0%B8%D1%82.%20%D0%90%22,%22time%22:%22%D0%9A%D0%B0%D0%B6%D0%B4%D1%8B%D0%B9%20%D0%B4%D0%B5%D0%BD%D1%8C%20%D1%81%2012:00%20%D0%B4%D0%BE%201:00%22,%22text%22:%223%22}]};",
+				'type': "list",
+				'access_token': "07dd72ee40d6be2b0621580366812643d0e83addfc2903cc542369a6e842817342b59977ddbb00c43e691"
+			}, function (response) {
+				console.log(response);
+				if (response.response) {
+					console.log(response.response);
+				} else {
+					console.log(response.response);
+				}
+			});
+			<!-- VK.callMethod("appWidgets.update", 'list', getWidget(data)); -->
+		}, 60000);
+	<!-- }); -->
+var app = {
+	getAlert: function(){
+		console.log("START");
 	}
-	app.getAlert();
+}
+app.getAlert();
 </script>
 <style>
 .app_widget_list_content {
