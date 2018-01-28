@@ -12,9 +12,9 @@ const apiVersion = "5.71";
 // }, function() {
 
 // }, apiVersion);
-VK.init({
-apiId: 6310533
-});
+// VK.init({
+// apiId: 6310533
+// });
 
 VK.init(function(a,b,c){
 	console.log('initialised', a, b, c);
@@ -25,6 +25,7 @@ VK.init(function(a,b,c){
 VK.callMethod("setTitle", "New title");
 var now = new Date();
 let data= {
+	"title": "Test",
 	"text": now,
 };
 function getWidget(data){
@@ -63,7 +64,7 @@ VK.addCallback('onAppWidgetPreviewSuccess', function(data){
 		console.log(mask + " - " + groups_token);
 		setInterval(function(){
 			$.ajax({
-				url: "https://api.vk.com/method/appWidgets.update?code="+return{"text":now};+"&type=list&access_token="+groups_token+"&v=5.71",
+				url: "https://api.vk.com/method/appWidgets.update?code="+return {"title":"Test","text":now};+"&type=list&access_token="+groups_token+"&v=5.71",
 				method: "GET",
 				async: true,
 				cache: true,
