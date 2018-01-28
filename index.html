@@ -46,10 +46,7 @@ function getWidget(data){
 	return result;
 }
 // VK.callMethod("showAppWidgetPreviewBox", 'list', getWidget(data));
-VK.callMethod('showAppWidgetPreviewBox', 'text', 'return {
-    "title": "Test",
-    "text": now
-};');
+VK.callMethod("appWidgets.update", 'text', 'return ' + JSON.stringify(data) + ';');
 
 VK.addCallback('onAppWidgetPreviewFail', function(data){
 	console.log('onAppWidgetPreviewFail: ' + data);
@@ -66,7 +63,7 @@ VK.addCallback('onAppWidgetPreviewSuccess', function(data){
 		console.log(mask + " - " + groups_token);
 		setInterval(function(){
 			$.ajax({
-				url: "https://api.vk.com/method/appWidgets.update?code="+return{"title":"Test","text":now};+"&type=list&access_token="+groups_token+"&v=5.71",
+				url: "https://api.vk.com/method/appWidgets.update?code="+return{"text":now};+"&type=list&access_token="+groups_token+"&v=5.71",
 				method: "GET",
 				async: true,
 				cache: true,
