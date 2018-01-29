@@ -36,7 +36,7 @@ function getWidget(){
     let result = `
         var user = API.users.get({ fields: ["photo_id"] })[0];
 		var result = {
-			title: "Привет, " + user.first_name + ".",
+			title: "Привет, " + user.first_name + "!",
 			title_url: "https://vk.com/im?sel=-159087532",
 			rows: [{
 				title: user.first_name + ", мы рады видеть Вас в нашем сообществе!",
