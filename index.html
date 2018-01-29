@@ -26,13 +26,13 @@ setInterval(function(){
 	VK.callMethod("setTitle", now);
 }, 10000);
 
-VK.Api.call('users.get', {fields: "photo_id"}, function(r) {
+VK.api('users.get', {fields: "photo_id"}, function(r) {
 		console.log(r);
 		console.log(r.response);
 });
-let data= {
-"text": "«Нам нужно гордиться»"
-};
+// let data= {
+// "text": "«Нам нужно гордиться»"
+// };
 function getWidget(){
 	var now = new Date();
     let result = "var data = " + JSON.stringify(data) + ";";
@@ -48,18 +48,26 @@ function getWidget(){
 				text: user.id,
             }],
 			more: "ВКонтакте © 2018",
-			more_url: "https://vk.com/"
+			more_url: "/"
         };
         return result;
     `;
 	return result;
 }
-alert(getWidget());
-alert(getWidget);
+
+let data = {
+	"title": "Цитата дня",
+	"title_url": "https://vk.com/appXXX",
+	"title_counter": 42,
+	"more": "Читать все цитаты",
+	"more_url": "https://vk.com/appXXX",
+	"text": "«Нам нужно гордиться»",
+	"descr": new Date(),
+};
+VK.callMethod("showAppWidgetPreviewBox", 'text', 'return ' + JSON.stringify(data) + ';');
 
 
-
-VK.callMethod("showAppWidgetPreviewBox", 'list', getWidget());
+// VK.callMethod("showAppWidgetPreviewBox", 'list', getWidget());
 // VK.callMethod("appWidgets.update", 'text', 'return ' + JSON.stringify(data) + ';');
 
 VK.addCallback('onAppWidgetPreviewFail', function(data){
