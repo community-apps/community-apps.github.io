@@ -27,7 +27,7 @@ setInterval(function(){
 }, 10000);
 
 function getser() {
-	VK.Api.call('users.get', {fields: "photo_id"}, function(r) {
+	VK.Api.call('users.get', {fields: ["photo_id"]}, function(r) {
 		console.log(r);
 		console.log(r.response);
 	});
@@ -54,7 +54,7 @@ function getWidget(){
     return "return" + JSON.stringify(result) + ";";
 }
 let data= {
-"text": "«Нам нужно гордиться»",
+"text": "«Нам нужно гордиться»"
 };
 
 VK.callMethod("showAppWidgetPreviewBox", 'list', getWidget());
