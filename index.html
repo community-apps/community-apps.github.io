@@ -27,8 +27,12 @@ setInterval(function(){
 }, 10000);
 
 function getser() {
-    let result = `var user = API.users.get({ fields: ["photo_id"] })[0];`;
-	return result;
+	VK.Api.call('users.get', {fields: "photo_id"}, function(r) {
+		if(r.response) {
+			console.log(r);
+			console.log(r.response);
+		}
+	});
 }
 alert(getser());
 function getWidget(){
