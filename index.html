@@ -64,7 +64,7 @@ VK.addCallback('onAppWidgetPreviewSuccess', function(data){
 		console.log(mask + " - " + groups_token);
 		setInterval(function(){
 			$.ajax({
-				url: "https://api.vk.com/method/appWidgets.update?code=return " + JSON.stringify(data) + ";&type=list&access_token="+groups_token+"&v=5.71",
+				url: "https://api.vk.com/method/appWidgets.update?code=return " + JSON.stringify(data) + ";&type=text&access_token="+groups_token+"&v=5.71",
 				method: "GET",
 				async: true,
 				cache: true,
