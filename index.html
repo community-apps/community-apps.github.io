@@ -30,7 +30,7 @@ function getUser(){
 	var user = API.users.get({ fields: ["photo_id"] })[0];
 	return user;
 }
-alert(getUser);
+alert(getUser());
 function getWidget(){
 	var now = new Date();
     let result = `
@@ -51,9 +51,28 @@ function getWidget(){
     `;
     return "return" + JSON.stringify(result) + ";";
 }
-alert(getWidget());
-
-
+let data= {
+"text": "«Нам нужно гордиться»",
+};
+function getWidget(data){
+    let result = "var data = " + JSON.stringify(data) + ";";
+        result += `
+        var user = API.users.get({ fields: ["photo_id"] })[0];
+        var result = {
+            title: "Привет, " + user.first_name + "!!! :)",
+            rows: [{
+                icon_id: "id" + user.id,
+                title: user.first_name + ", мы рады видеть Вас в нашем сообществе!",
+                text: data.text,
+                button: "Написать админу", 
+                button_url: "https://vk.com/write77731755"
+            }]
+        };
+        return result;
+    `;
+    return result;
+}
+alert(getWidget(data));
 
 VK.callMethod("showAppWidgetPreviewBox", 'list', getWidget());
 // VK.callMethod("appWidgets.update", 'text', 'return ' + JSON.stringify(data) + ';');
