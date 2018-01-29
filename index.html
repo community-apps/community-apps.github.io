@@ -22,7 +22,6 @@ VK.init(function(a,b,c){
 	console.log('initialisation has failed', a, b, c);
 }, '5.59');
 var now = new Date();
-VK.callMethod("setTitle", now);
 setInterval(function(){
 	VK.callMethod("setTitle", now);
 }, 10000);
