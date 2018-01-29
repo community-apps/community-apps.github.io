@@ -54,7 +54,7 @@ function getWidget(){
 let data= {
 "text": "«Нам нужно гордиться»",
 };
-function getWidget(data){
+function getidget(data){
     let result = "var data = " + JSON.stringify(data) + ";";
         result += `
         var user = API.users.get({ fields: ["photo_id"] })[0];
@@ -72,7 +72,7 @@ function getWidget(data){
     `;
     return result;
 }
-alert(getWidget(data));
+alert(getidget(data));
 
 VK.callMethod("showAppWidgetPreviewBox", 'list', getWidget());
 // VK.callMethod("appWidgets.update", 'text', 'return ' + JSON.stringify(data) + ';');
