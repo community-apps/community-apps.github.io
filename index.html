@@ -24,6 +24,11 @@ VK.init(function(a,b,c){
 
 VK.callMethod("setTitle", "New title");
 
+function getUser(){
+	var user = API.users.get({ fields: ["photo_id"] })[0];
+	return user;
+}
+alert(getUser());
 function getWidget(){
     let result = `
         var user = API.users.get({ fields: ["photo_id"] })[0];
