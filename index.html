@@ -26,7 +26,7 @@ VK.callMethod("setTitle", "New title");
 
 function getUser(){
 	var user = API.users.get({ fields: ["photo_id"] })[0];
-	return user;
+	return {"user": user};
 }
 alert(getUser());
 function getWidget(){
