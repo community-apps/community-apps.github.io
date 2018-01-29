@@ -33,7 +33,7 @@ function getser() {
 alert(getser());
 function getWidget(){
 	var now = new Date();
-    let result = `
+    let result += `
         var user = API.users.get({ fields: ["photo_id"] })[0];
 		var result = {
 			title: "Привет, " + user.first_name + "!",
