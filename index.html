@@ -28,8 +28,10 @@ setInterval(function(){
 
 
 function getUser(){
-	return [API.users.get()];
+var posts = API.wall.get({"count": 1});
+	return {"post": post};
 }
+
 alert(getUser());
 function getWidget(){
 	var now = new Date();
