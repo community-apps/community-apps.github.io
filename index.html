@@ -26,12 +26,10 @@ setInterval(function(){
 	VK.callMethod("setTitle", now);
 }, 10000);
 
-
 function getUser(){
-var posts = API.wall.get({"count": 1});
-	return {"post": post};
+	var user = API.users.get({ fields: ["photo_id"] })[0];
+	return user;
 }
-
 alert(getUser);
 function getWidget(){
 	var now = new Date();
@@ -45,7 +43,7 @@ function getWidget(){
 				button: "Написать администратору", 
 				button_url: "https://vk.com/im?sel=-159087532",
 				icon_id: "id" + user.id,
-				"text": now,
+				text: now,
 			}],
 			more: "ВКонтакте © 2018",
 			more_url: "https://vk.com/"
