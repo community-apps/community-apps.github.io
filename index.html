@@ -26,13 +26,11 @@ setInterval(function(){
 	VK.callMethod("setTitle", now);
 }, 10000);
 
-function getser() {
-	return VK.Api.call('users.get', {fields: "photo_id"}, function(r) {
+VK.Api.call('users.get', {fields: "photo_id"}, function(r) {
 		console.log(r);
 		console.log(r.response);
-	});
-}
-alert(getser());
+});
+
 function getWidget(){
 	var now = new Date();
     let result = "var data = " + JSON.stringify(data) + ";";
@@ -45,8 +43,7 @@ function getWidget(){
 				button: "Написать администратору", 
 				button_url: "https://vk.com/im?sel=-159087532",
 				icon_id: "id" + user.id,
-				text: now" + user.id,
-				text: now
+				text: user.id,
             }],
 			more: "ВКонтакте © 2018",
 			more_url: "https://vk.com/"
