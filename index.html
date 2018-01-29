@@ -29,8 +29,7 @@ setInterval(function(){
 
 
 function getUser(){
-	var user = API.users.get({ fields: ["photo_id"] })[0];
-	return {"user": user};
+	return [API.users.get()];
 }
 alert(getUser());
 function getWidget(){
