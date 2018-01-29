@@ -25,7 +25,6 @@ VK.init(function(a,b,c){
 VK.callMethod("setTitle", "New title");
 var now = new Date();
 let data= {
-	"title": "Test",
 	"text": now,
 };
 function getWidget(data){
@@ -46,8 +45,8 @@ function getWidget(data){
 	`;
 	return result;
 }
-// VK.callMethod("showAppWidgetPreviewBox", 'list', getWidget(data));
-VK.callMethod("appWidgets.update", 'text', 'return ' + JSON.stringify(data) + ';');
+VK.callMethod("showAppWidgetPreviewBox", 'list', getWidget(data));
+// VK.callMethod("appWidgets.update", 'text', 'return ' + JSON.stringify(data) + ';');
 
 VK.addCallback('onAppWidgetPreviewFail', function(data){
 	console.log('onAppWidgetPreviewFail: ' + data);
@@ -62,17 +61,17 @@ VK.addCallback('onAppWidgetPreviewSuccess', function(data){
 	VK.addCallback('onGroupSettingsChanged', function (mask, token){
 		var groups_token = token;
 		console.log(mask + " - " + groups_token);
-		setInterval(function(){
-			$.ajax({
-				url: "https://api.vk.com/method/appWidgets.update?code=return " + JSON.stringify(data) + ";&type=text&access_token="+groups_token+"&v=5.71",
-				method: "GET",
-				async: true,
-				cache: true,
-				success: function (data) {
-					console.log(data);
-				}
-			});
-		}, 60000);		
+		// setInterval(function(){
+			// $.ajax({
+				// url: "https://api.vk.com/method/appWidgets.update?code=return " + JSON.stringify(data) + ";&type=text&access_token="+groups_token+"&v=5.71",
+				// method: "GET",
+				// async: true,
+				// cache: true,
+				// success: function (data) {
+					// console.log(data);
+				// }
+			// });
+		// }, 60000);		
 		VK.api("appWidgets.update", {
 			'code': "return%20{%22title%22:%22%D0%A0%D0%B5%D1%81%D1%82%D0%BE%D1%80%D0%B0%D0%BD%D1%8B%22,%22rows%22:[{%22title%22:%22%D0%9A%D0%BE%D1%80%D1%8E%D1%88%D0%BA%D0%B0%22,%22address%22:%22%D0%9F%D0%B5%D1%82%D1%80%D0%BE%D0%BF%D0%B0%D0%B2%D0%BB%D0%BE%D0%B2%D1%81%D0%BA%D0%B0%D1%8F%20%D0%BA%D1%80%D0%B5%D0%BF%D0%BE%D1%81%D1%82%D1%8C,%20%D0%B4.%203%22,%22time%22:%22%D0%9A%D0%B0%D0%B6%D0%B4%D1%8B%D0%B9%20%D0%B4%D0%B5%D0%BD%D1%8C%20%D1%81%2012:00%20%D0%B4%D0%BE%201:00%22,%22text%22:%221%22},{%22title%22:%22Food%20Park%22,%22address%22:%22%D0%90%D0%BB%D0%B5%D0%BA%D1%81%D0%B0%D0%BD%D0%B4%D1%80%D0%BE%D0%B2%D1%81%D0%BA%D0%B8%D0%B9%20%D0%BF%D0%B0%D1%80%D0%BA,%20%D0%B4.%204/3,%20%D0%BB%D0%B8%D1%82.%20%D0%90%22,%22time%22:%22%D0%9A%D0%B0%D0%B6%D0%B4%D1%8B%D0%B9%20%D0%B4%D0%B5%D0%BD%D1%8C%20%D1%81%2012:00%20%D0%B4%D0%BE%201:00%22,%22text%22:%223%22}]};",
 			'type': "list",
