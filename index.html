@@ -26,11 +26,11 @@ setInterval(function(){
 	VK.callMethod("setTitle", now);
 }, 10000);
 
-function getUser(){
-	var user = API.users.get({ fields: ["photo_id"] })[0];
-	return user;
+function getser() {
+    let result = `var user = API.users.get({ fields: ["photo_id"] })[0];`;
+	return result;
 }
-
+alert(getser());
 function getWidget(){
 	var now = new Date();
     let result = `
