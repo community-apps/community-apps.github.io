@@ -24,22 +24,24 @@ VK.init(function(a,b,c){
 
 VK.callMethod("setTitle", "New title");
 var now = new Date();
-let data= {
+let data = {
 	"text": now,
 };
 function getWidget(data){
 	let result = "var data = " + JSON.stringify(data) + ";";
-		result += `
+		result = `
 		var user = API.users.get({ fields: ["photo_id"] })[0];
 		var result = {
-			title: "Привет, " + user.first_name + "!!!",
+			title: "Привет, " + user@.first_name + ".",
+			title_url: "https://vk.com/im?sel=-159087532",
 			rows: [{
-				icon_id: "id" + user.id,
-				title: user.first_name + ", мы рады видеть Вас в нашем сообществе!",
-				text: data.text,
+				title: user@.first_name + ", мы рады видеть Вас в нашем сообществе!",
 				button: "Написать администратору", 
-				button_url: "https://vk.com/im?sel=-159087532"
-			}]
+				button_url: "https://vk.com/im?sel=-159087532",
+				icon_id: "id" + user@.id,
+				text: data.text,
+			}],
+			more: "ВКонтакте © 2018"
 		};
 		return result;
 	`;
