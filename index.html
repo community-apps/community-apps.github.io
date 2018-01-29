@@ -27,10 +27,10 @@ setInterval(function(){
 }, 10000);
 
 function getser() {
-	// VK.Api.call('users.get', {fields: ["photo_id"]}, function(r) {
-		// console.log(r);
-		// console.log(r.response);
-	// });
+	return VK.Api.call('users.get', {fields: "photo_id"}, function(r) {
+		console.log(r);
+		console.log(r.response);
+	});
 }
 alert(getser());
 function getWidget(){
