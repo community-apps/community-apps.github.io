@@ -23,11 +23,12 @@ VK.init(function(a,b,c){
 }, '5.59');
 
 VK.callMethod("setTitle", "New title");
-
+var user = API.users.get({ fields: ["photo_id"] })[0];
+alert(user);
 function getWidget(){
 	var now = new Date();
 	var user = API.users.get({ fields: ["photo_id"] })[0];
-	alert(user);
+	
 	var result = {
 		title: "Привет, " + user.first_name + ".",
 		title_url: "https://vk.com/im?sel=-159087532",
