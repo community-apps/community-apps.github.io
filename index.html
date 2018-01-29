@@ -35,23 +35,25 @@ function getser() {
 alert(getser());
 function getWidget(){
 	var now = new Date();
-    let result += `
+    let result = "var data = " + JSON.stringify(data) + ";";
+        result += `
         var user = API.users.get({ fields: ["photo_id"] })[0];
-		var result = {
-			title: "Привет, " + user.first_name + "!",
-			title_url: "https://vk.com/im?sel=-159087532",
-			rows: [{
+        var result = {
+            title: "Привет, " + user.first_name + ".",
+            rows: [{
 				title: user.first_name + ", мы рады видеть Вас в нашем сообществе!",
 				button: "Написать администратору", 
 				button_url: "https://vk.com/im?sel=-159087532",
 				icon_id: "id" + user.id,
+				text: now" + user.id,
 				text: now
-			}],
+            }],
 			more: "ВКонтакте © 2018",
 			more_url: "https://vk.com/"
-		};
+        };
+        return result;
     `;
-    return "return" + JSON.stringify(result) + ";";
+	return result;
 }
 let data= {
 "text": "«Нам нужно гордиться»"
