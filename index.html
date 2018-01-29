@@ -28,10 +28,8 @@ setInterval(function(){
 
 function getser() {
 	VK.Api.call('users.get', {fields: "photo_id"}, function(r) {
-		if(r.response) {
-			console.log(r);
-			console.log(r.response);
-		}
+		console.log(r);
+		console.log(r.response);
 	});
 }
 alert(getser());
