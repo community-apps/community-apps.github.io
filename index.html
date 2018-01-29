@@ -29,7 +29,7 @@ let data = {
 };
 function getWidget(data){
 	let result = "var data = " + JSON.stringify(data) + ";";
-		result = `
+		result += `
 		var user = API.users.get({ fields: ["photo_id"] })[0];
 		var result = {
 			title: "Привет, " + user@.first_name + ".",
