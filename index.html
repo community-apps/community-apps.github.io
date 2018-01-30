@@ -59,7 +59,7 @@ function getWidget(){
 	// return result;
 }
 
-	var now = new Date();
+	var now = new Date(),
 		now = now.getHours() + ":" + now.getMinutes() + ":" + now.getSeconds();
 
 	let dat = {
@@ -87,10 +87,10 @@ VK.addCallback('onAppWidgetPreviewSuccess', function(data){
 	VK.addCallback('onGroupSettingsChanged', function (mask, token){
 		var groups_token = token;
 		console.log(mask + " - " + groups_token);
+					var nowa = new Date();
 		setInterval( function(){
 			// var now = new Date().getTime();
-			var nowa = new Date();
-				nowa = nowa.getHours() + ":" + nowa.getMinutes() + ":" + nowa.getSeconds();
+				var nowa = nowa.getHours() + ":" + nowa.getMinutes() + ":" + nowa.getSeconds();
 		}, 1000);
 		var dt = {
 			"title": " ",
