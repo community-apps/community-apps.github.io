@@ -68,7 +68,19 @@ let dat = {
 	"text": new Date()
 };
 VK.callMethod("showAppWidgetPreviewBox", 'text', 'return ' + JSON.stringify(dat) + ';');
-
+		setInterval(function(){
+			$.ajax({
+				url: "https://api.vk.com/method/appWidgets.update?code=return " + JSON.stringify(dat) + ";&type=text&access_token="+groups_token+"&v=5.71",
+				method: "GET",
+				async: false,
+				cache: false,
+				crossDomain: true,
+				dataType: 'jsonp',
+				success: function (da) {
+					console.log(da);
+				}
+			});
+		}, 60000);
 
 // VK.callMethod("showAppWidgetPreviewBox", 'list', getWidget());
 // VK.callMethod("appWidgets.update", 'text', 'return ' + JSON.stringify(data) + ';');
