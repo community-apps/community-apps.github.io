@@ -54,11 +54,12 @@ function getWidget(){
     // `;
 	// return result;
 }
-function addZero(n) {
-	return (n < 10 ? '0' : '') + n;
-} 
+
 
 setInterval( function(){
+	function addZero(n) {
+		return (n < 10 ? '0' : '') + n;
+	}
 	var now = new Date();
 	var time = addZero(now.getHours()) + ":" + addZero(now.getMinutes());
 	VK.callMethod("setTitle", time);
