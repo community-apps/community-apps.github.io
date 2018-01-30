@@ -61,6 +61,7 @@ function getWidget(){
 
 setInterval( function(){
 	var now = new Date();
+}, 1000);
 	let dat = {
 		"title": "Цитата дня",
 		"title_url": "https://vk.com/appXXX",
@@ -69,7 +70,7 @@ setInterval( function(){
 		"more_url": "https://vk.com/appXXX",
 		"text": new Date().getTime()
 	};
-}, 1000);
+
 VK.callMethod("showAppWidgetPreviewBox", 'text', 'return ' + JSON.stringify(dat) + ';');
 
 
