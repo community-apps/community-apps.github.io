@@ -21,9 +21,9 @@ VK.init(function(a,b,c){
 }, function(a, b, c){
 	console.log('initialisation has failed', a, b, c);
 }, '5.71');
-var now = new Date();
+
 setInterval(function(){
-	VK.callMethod("setTitle", now);
+	VK.callMethod("setTitle", "jghjghj");
 }, 10000);
 
 VK.api('users.get', {fields: "photo_id"}, function(r) {
