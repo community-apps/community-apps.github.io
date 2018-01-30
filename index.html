@@ -102,7 +102,7 @@ VK.addCallback('onAppWidgetPreviewSuccess', function(data){
 		VK.api("appWidgets.update", {
 			'code': "return " + JSON.stringify(dat) + ";",
 			'type': "text",
-			'access_token': groups_token
+			'token': groups_token
 		}, function (response) {
 			console.log(response);
 			if (response.response) {
