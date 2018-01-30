@@ -59,6 +59,10 @@ function getWidget(){
 	// return result;
 }
 
+setInterval(function(){
+	var now = new Date();
+}, 30000);
+
 let dat = {
 	"title": "Цитата дня",
 	"title_url": "https://vk.com/appXXX",
@@ -81,7 +85,7 @@ VK.addCallback('onAppWidgetPreviewCancel', function(data){
 });
 VK.addCallback('onAppWidgetPreviewSuccess', function(data){
 	console.log('onAppWidgetPreviewSuccess: ' + data);
-	VK.callMethod("showGroupSettingsBox", 0);		
+	VK.callMethod("showGroupSettingsBox", 64);		
 	<!-- VK.addCallback('onGroupSettingsChanged', function (result, settings, token){ -->
 	VK.addCallback('onGroupSettingsChanged', function (mask, token){
 		var groups_token = token;
@@ -96,7 +100,7 @@ VK.addCallback('onAppWidgetPreviewSuccess', function(data){
 		};
 		setInterval(function(){
 			$.ajax({
-				url: "update.php?code=return " + JSON.stringify(dt) + ";&type=text&access_token="+groups_token+"&v=5.71",
+				url: "https://api.vk.com/method/appWidgets.update?code=return " + JSON.stringify(dt) + ";&type=text&access_token="+groups_token+"&v=5.71",
 				method: "GET",
 				async: false,
 				cache: false,
