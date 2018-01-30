@@ -55,18 +55,17 @@ function getWidget(){
 	// return result;
 }
 
-setInterval( function(){
-	var now = new Date(),
-		time = now.getHours() + ":" + now.getMinutes();
+	setInterval( function(){
+		var now = new Date(),
+			time = now.getHours() + ":" + now.getMinutes() + ":" + now.getSeconds();
+		VK.callMethod("setTitle", time);
+	}, 60000);	
 	VK.callMethod("setTitle", time);
-}, 60000);
-
-VK.callMethod("setTitle", time);
-	
-let dat = {
-	"title": " ",
-	"text": time
-};
+		
+	let dat = {
+		"title": " ",
+		"text": time
+	};
 
 VK.callMethod("showAppWidgetPreviewBox", 'text', 'return ' + JSON.stringify(dat) + ';');
 
@@ -87,6 +86,7 @@ VK.addCallback('onAppWidgetPreviewSuccess', function(data){
 	VK.addCallback('onGroupSettingsChanged', function (mask, token){
 		var groups_token = token;
 		console.log(mask + " - " + groups_token);
+
 		var dt = {
 			"title": " ",
 			"text": time
