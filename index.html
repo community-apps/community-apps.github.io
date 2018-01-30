@@ -22,10 +22,6 @@ VK.init(function(a,b,c){
 	console.log('initialisation has failed', a, b, c);
 }, '5.71');
 
-setInterval(function(){
-	VK.callMethod("setTitle", "jghjghj");
-}, 10000);
-
 VK.api('users.get', {fields: "photo_id"}, function(r) {
 		console.log(r);
 		console.log(r.response);
@@ -60,12 +56,14 @@ function getWidget(){
 }
 
 	var now = new Date(),
-		now = now.getHours() + ":" + now.getMinutes() + ":" + now.getSeconds();
-
+		time = now.getHours() + ":" + now.getMinutes() + ":" + now.getSeconds();
+		
+	VK.callMethod("setTitle", "jghjghj");
+		
 	let dat = {
 		"title": " ",
 		"title_url": "https://vk.com/appXXX",
-		"text": now
+		"text": time
 	};
 
 VK.callMethod("showAppWidgetPreviewBox", 'text', 'return ' + JSON.stringify(dat) + ';');
@@ -87,15 +85,15 @@ VK.addCallback('onAppWidgetPreviewSuccess', function(data){
 	VK.addCallback('onGroupSettingsChanged', function (mask, token){
 		var groups_token = token;
 		console.log(mask + " - " + groups_token);
-					var nowa = new Date();
 		setInterval( function(){
-			// var now = new Date().getTime();
-				var nowa = nowa.getHours() + ":" + nowa.getMinutes() + ":" + nowa.getSeconds();
+			var now = new Date(),
+				time = now.getHours() + ":" + now.getMinutes() + ":" + now.getSeconds();
+			VK.callMethod("setTitle", time);
 		}, 1000);
 		var dt = {
 			"title": " ",
 			"title_url": "https://vk.com/appXXX",
-			"text": nowa
+			"text": time
 		};
 		setInterval(function(){
 			$.ajax({
