@@ -59,8 +59,8 @@ function addZero(n) {
 } 
 
 setInterval( function(){
-	let now = new Date(),
-		time = addZero(now.getHours()) + ":" + addZero(now.getMinutes());
+	let now = new Date();
+	let time = addZero(now.getHours()) + ":" + addZero(now.getMinutes());
 	VK.callMethod("setTitle", time);
 }, 60000);
 
