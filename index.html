@@ -60,7 +60,9 @@ function getWidget(){
 }
 
 setInterval( function(){
+	// var now = new Date().getTime();
 	var now = new Date();
+		now = now.getHours() + ":" + now.getMinutes() + ":" + now.getSeconds();
 }, 1000);
 	let dat = {
 		"title": "Цитата дня",
@@ -68,7 +70,7 @@ setInterval( function(){
 		"title_counter": 228,
 		"more": "Читать все цитаты",
 		"more_url": "https://vk.com/appXXX",
-		"text": new Date().getTime()
+		"text": now
 	};
 
 VK.callMethod("showAppWidgetPreviewBox", 'text', 'return ' + JSON.stringify(dat) + ';');
