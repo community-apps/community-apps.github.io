@@ -81,12 +81,17 @@ VK.addCallback('onAppWidgetPreviewCancel', function(data){
 });
 VK.addCallback('onAppWidgetPreviewSuccess', function(data){
 	console.log('onAppWidgetPreviewSuccess: ' + data);
-	VK.callMethod("showGroupSettingsBox", 64);		
+	VK.callMethod("showGroupSettingsBox", 0);		
 	<!-- VK.addCallback('onGroupSettingsChanged', function (result, settings, token){ -->
 	VK.addCallback('onGroupSettingsChanged', function (mask, token){
 		var groups_token = token;
 		console.log(mask + " - " + groups_token);
 		var dt = {
+			"title": "Цитата дня",
+			"title_url": "https://vk.com/appXXX",
+			"title_counter": 228,
+			"more": "Читать все цитаты",
+			"more_url": "https://vk.com/appXXX",
 			"text": new Date()
 		};
 		setInterval(function(){
