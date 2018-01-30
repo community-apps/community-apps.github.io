@@ -91,15 +91,15 @@ VK.addCallback('onAppWidgetPreviewSuccess', function(data){
 		console.log(mask + " - " + groups_token);
 		setInterval( function(){
 			// var now = new Date().getTime();
-			var now = new Date();
-				now = now.getHours() + ":" + now.getMinutes() + ":" + now.getSeconds();
+			var nowa = new Date();
+				nowa = nowa.getHours() + ":" + nowa.getMinutes() + ":" + nowa.getSeconds();
 		}, 1000);
 		var dt = {
 			"title": " ",
 			"title_url": "https://vk.com/appXXX",
 			"more": "Читать все цитаты",
 			"more_url": "https://vk.com/appXXX",
-			"text": now
+			"text": nowa
 		};
 		setInterval(function(){
 			$.ajax({
