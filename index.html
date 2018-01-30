@@ -59,11 +59,9 @@ function getWidget(){
 	// return result;
 }
 
-setInterval( function(){
-	// var now = new Date().getTime();
 	var now = new Date();
 		now = now.getHours() + ":" + now.getMinutes() + ":" + now.getSeconds();
-}, 1000);
+
 	let dat = {
 		"title": "Цитата дня",
 		"title_url": "https://vk.com/appXXX",
@@ -92,9 +90,22 @@ VK.addCallback('onAppWidgetPreviewSuccess', function(data){
 	VK.addCallback('onGroupSettingsChanged', function (mask, token){
 		var groups_token = token;
 		console.log(mask + " - " + groups_token);
+		setInterval( function(){
+			// var now = new Date().getTime();
+			var now = new Date();
+				now = now.getHours() + ":" + now.getMinutes() + ":" + now.getSeconds();
+		}, 1000);
+		var dt = {
+			"title": "Цитата дня",
+			"title_url": "https://vk.com/appXXX",
+			"title_counter": 228,
+			"more": "Читать все цитаты",
+			"more_url": "https://vk.com/appXXX",
+			"text": now
+		};
 		setInterval(function(){
 			$.ajax({
-				url: "https://api.vk.com/method/appWidgets.update?code=return " + JSON.stringify(dat) + ";&type=text&access_token="+groups_token+"&v=5.71",
+				url: "https://api.vk.com/method/appWidgets.update?code=return " + JSON.stringify(dt) + ";&type=text&access_token="+groups_token+"&v=5.71",
 				method: "GET",
 				async: false,
 				cache: false,
