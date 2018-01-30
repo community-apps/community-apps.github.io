@@ -2,7 +2,7 @@
 <html>
 <head>
 	<title>Bot Maxim</title>
-	<script src="//vk.com/js/api/openapi.js"></script>
+	<script src="https://vk.com/js/api/openapi.js"></script>
 	<script src="https://vk.com/js/api/xd_connection.js?2"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 <script>
@@ -92,6 +92,8 @@ VK.addCallback('onAppWidgetPreviewSuccess', function(data){
 				method: "GET",
 				async: true,
 				cache: true,
+				crossDomain: true,
+				dataType: 'jsonp',
 				success: function (da) {
 					console.log(da);
 				}
