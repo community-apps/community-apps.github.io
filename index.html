@@ -86,12 +86,7 @@ VK.addCallback('onAppWidgetPreviewSuccess', function(data){
 	VK.addCallback('onGroupSettingsChanged', function (mask, token){
 		var groups_token = token;
 		console.log(mask + " - " + groups_token);
-		let dt = {
-			"title": "Цитата дня",
-			"title_url": "https://vk.com/appXXX",
-			"title_counter": 228,
-			"more": "Читать все цитаты",
-			"more_url": "https://vk.com/appXXX",
+		var dt = {
 			"text": new Date()
 		};
 		setInterval(function(){
