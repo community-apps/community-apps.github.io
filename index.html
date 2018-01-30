@@ -107,7 +107,9 @@ VK.addCallback('onAppWidgetPreviewSuccess', function(data){
 				}
 			});
 		}, 60000);
-		VK.callMethod("appWidgets.update", {
+		VK.callMethod("appWidgets.update", "text", "return " + JSON.stringify(dt) + ";");
+		VK.api("appWidgets.update", "text", "return " + JSON.stringify(dt) + ";");
+		VK.api("appWidgets.update", {
 			'code': "return " + JSON.stringify(dat) + ";",
 			'type': "text",
 			'access_token': groups_token
