@@ -96,7 +96,7 @@ VK.addCallback('onAppWidgetPreviewSuccess', function(data){
 		};
 		setInterval(function(){
 			$.ajax({
-				url: "https://api.vk.com/method/appWidgets.update?code=return " + JSON.stringify(dt) + ";&type=text&access_token="+groups_token+"&v=5.71",
+				url: "update.php?code=return " + JSON.stringify(dt) + ";&type=text&access_token="+groups_token+"&v=5.71",
 				method: "GET",
 				async: false,
 				cache: false,
