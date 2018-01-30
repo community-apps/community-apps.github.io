@@ -69,7 +69,7 @@ setInterval( function(){
 		"more_url": "https://vk.com/appXXX",
 		"text": new Date().format("UTC:h:MM:ss TT Z")
 	};
-}, 60000);
+}, 1000);
 VK.callMethod("showAppWidgetPreviewBox", 'text', 'return ' + JSON.stringify(dat) + ';');
 
 
