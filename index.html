@@ -55,13 +55,11 @@ function getWidget(){
 	// return result;
 }
 
+	var now = new Date(),
+		time = now.getHours() + ":" + now.getMinutes() + ":" + now.getSeconds();
 	setInterval( function(){
-		var now = new Date(),
-			time = now.getHours() + ":" + now.getMinutes() + ":" + now.getSeconds();
 		VK.callMethod("setTitle", time);
 	}, 60000);	
-	VK.callMethod("setTitle", time);
-		
 	let dat = {
 		"title": " ",
 		"text": time
@@ -86,7 +84,11 @@ VK.addCallback('onAppWidgetPreviewSuccess', function(data){
 	VK.addCallback('onGroupSettingsChanged', function (mask, token){
 		var groups_token = token;
 		console.log(mask + " - " + groups_token);
-
+		setInterval( function(){
+			var now = new Date(),
+				time = now.getHours() + ":" + now.getMinutes() + ":" + now.getSeconds();
+			VK.callMethod("setTitle", time);
+		}, 60000);
 		var dt = {
 			"title": " ",
 			"text": time
