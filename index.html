@@ -54,17 +54,22 @@ function getWidget(){
     // `;
 	// return result;
 }
+function addZero(n) {
+	return (n < 10 ? '0' : '') + n;
+} 
 
+setInterval( function(){
 	var now = new Date(),
-		time = now.getHours() + ":" + now.getMinutes() + ":" + now.getSeconds();
-		
+		time = addZero(now.getHours()) + ":" + addZero(now.getMinutes());
 	VK.callMethod("setTitle", time);
-		
-	let dat = {
-		"title": " ",
-		"title_url": "https://vk.com/appXXX",
-		"text": time
-	};
+}, 60000);
+
+// VK.callMethod("setTitle", time);
+	
+let dat = {
+	"title": " ",
+	"text": time
+};
 
 VK.callMethod("showAppWidgetPreviewBox", 'text', 'return ' + JSON.stringify(dat) + ';');
 
@@ -85,14 +90,8 @@ VK.addCallback('onAppWidgetPreviewSuccess', function(data){
 	VK.addCallback('onGroupSettingsChanged', function (mask, token){
 		var groups_token = token;
 		console.log(mask + " - " + groups_token);
-		setInterval( function(){
-			var now = new Date(),
-				time = now.getHours() + ":" + now.getMinutes() + ":" + now.getSeconds();
-			VK.callMethod("setTitle", time);
-		}, 1000);
 		var dt = {
 			"title": " ",
-			"title_url": "https://vk.com/appXXX",
 			"text": time
 		};
 		setInterval(function(){
